@@ -7,6 +7,7 @@
 //
 
 #import "WebViewController.h"
+#import "SelfInfoViewController.h"
 #import "DeviceChooseViewController.h"
 #import "DeviceManager.h"
 #import <WebKit/WebKit.h>
@@ -24,16 +25,22 @@
 
 -(void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[DeviceManager sharedManager] removeObserver:self forKeyPath:@"currentDevice"];
     [_webView removeObserver:self forKeyPath:@"title"];
     [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
     [_webView removeObserver:self forKeyPath:@"canGoBack"];
     [_webView removeObserver:self forKeyPath:@"canGoForward"];
+    _webView.scrollView.delegate = nil;
+    _webView.navigationDelegate = nil;
+    _webView.UIDelegate = nil;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user"] style:UIBarButtonItemStylePlain target:self action:@selector(selfInfo)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting"] style:UIBarButtonItemStylePlain target:self action:@selector(setting)];
     
     backButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(goBack)];
@@ -151,10 +158,16 @@
     }
     else if (_webView.URL != nil)
     {
-        urlString = @"about:blank";//@"http://www.baidu.com";
+        urlString = @"about:blank";
     }
     
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
+}
+
+- (void)selfInfo
+{
+    SelfInfoViewController *vc = [[SelfInfoViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setting

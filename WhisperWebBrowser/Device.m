@@ -190,8 +190,9 @@ static NSString * const KEY_Service = @"portForwardingService";
     static AsyncSocket *asyncSocket;
     static dispatch_once_t onceTag;
     dispatch_once(&onceTag, ^{
-        asyncSocket = [[AsyncSocket alloc] initWithDelegate:self];
+        asyncSocket = [[AsyncSocket alloc] init];
     });
+    asyncSocket.delegate = self;
     
     uint16_t localPort = 0;
     if ([asyncSocket acceptOnInterface:@"127.0.0.1" port:0 error:error]) {
@@ -201,6 +202,7 @@ static NSString * const KEY_Service = @"portForwardingService";
     } else {
         NSLog(@"Get free localPort failed: %@", *error);
     }
+    
     return localPort;
 }
 

@@ -13,11 +13,9 @@ static NSString * const APP_KEY = @"6tzPPAgSACJdScX79wuzMNPQTWkRLZ4qEdhLcZU6q4B9
 
 static NSString * const API_SERVER = @"https://whisper.freeddns.org:8443/web/api";
 static NSString * const MQTT_SERVER = @"ssl://whisper.freeddns.org:8883";
-static NSString * const STUN_SERVER = @"whisper.freeddns.org";
-static NSString * const TURN_SERVER = @"whisper.freeddns.org";
-static NSString * const TURN_USERNAME = @"whisper";
-static NSString * const TURN_PASSWORD = @"io2016whisper";
 
+static NSString * const KEY_Username = @"username";
+static NSString * const KEY_SelfIdentifier = @"selfIdentifier";
 static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
 @interface DeviceManager () <WMWhisperDelegate>
@@ -50,12 +48,16 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
         connectStatus = WMWhisperConnectionStatusDisconnected;
         managerDeviceQueue = dispatch_queue_create("managerDeviceQueue", NULL);
         [WMWhisper setLogLevel:WMWhisperLogLevelDebug];
-        [self initialize];
+
+        _username = [[NSUserDefaults standardUserDefaults] stringForKey:KEY_Username];
+        if (_username) {
+            [self login:_username password:nil completion:nil];
+        }
     }
     return self;
 }
 
-- (void)initialize
+- (void)login:(NSString *)username password:(NSString *)password completion:(void (^)(NSError *error))completion
 {
     if (initializerd || connectStatus == WMWhisperConnectionStatusConnecting) {
         return;
@@ -64,6 +66,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
     connectStatus = WMWhisperConnectionStatusConnecting;
     
     dispatch_async(managerDeviceQueue, ^{
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSError *error = nil;
         if (whisperInstance == nil) {
             NSString *whisperDirectory = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"whisper"];
@@ -71,22 +74,32 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
                 NSURL *url = [NSURL fileURLWithPath:whisperDirectory];
                 if (![[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:&error]) {
                     NSLog(@"Create whisper persistent directory failed: %@", error);
+                    connectStatus = WMWhisperConnectionStatusDisconnected;
+                    if (completion) {
+                        completion(error);
+                    }
                     return;
                 }
 
                 [url setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:nil];
             }
+            else if (password) {
+                NSArray *subPaths = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:whisperDirectory error:nil];
+                for (NSString *path in subPaths) {
+                    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+                }
+            }
 
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            NSString *deviceId = [userDefaults stringForKey:@"selfIdentifier"];
+            NSString *deviceId = [userDefaults stringForKey:KEY_SelfIdentifier];
             if (deviceId == nil) {
                 deviceId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-                [userDefaults setObject:deviceId forKey:@"selfIdentifier"];
+                [userDefaults setObject:deviceId forKey:KEY_SelfIdentifier];
                 [userDefaults synchronize];
             }
 
             WMWhisperOptions *options = [[WMWhisperOptions alloc] init];
             [options setAppId:APP_ID andKey:APP_KEY];
+            [options setLogin:username andPassword:password];
             options.apiServerUrl = API_SERVER;
             options.mqttServerUri = MQTT_SERVER;
             options.trustStore = [[NSBundle mainBundle] pathForResource:@"whisper" ofType:@"pem"];
@@ -97,36 +110,65 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
             whisperInstance = [WMWhisper getInstanceWithOptions:options delegate:self error:&error];
             if (whisperInstance == nil) {
                 NSLog(@"Create whisper instance failed: %@", error);
+                connectStatus = WMWhisperConnectionStatusDisconnected;
+                if (completion) {
+                    completion(error);
+                }
                 return;
             }
         }
 
         initializerd = [whisperInstance startWithIterateInterval:1000 error:&error];
         if (initializerd) {
+            [userDefaults setObject:username forKey:KEY_Username];
+            [userDefaults synchronize];
+
+            _username = username;
             devices = [[NSMutableArray alloc] init];
         }
         else {
-            connectStatus = WMWhisperConnectionStatusDisconnected;
             NSLog(@"Start whisper instance failed: %@", error);
+            [whisperInstance kill];
+            whisperInstance == nil;
+            connectStatus = WMWhisperConnectionStatusDisconnected;
+        }
+
+        if (completion) {
+            completion(error);
         }
     });
 }
 
-- (NSArray *)devices
+- (void)logout
 {
-    if (devices == nil) {
-        [self initialize];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:KEY_Username];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    _username = nil;
+
+    for (Device *device in devices) {
+        [device disconnect];
     }
 
+    devices = nil;
+    currentDevice = nil;
+
+    [[WMWhisperSessionManager getInstance] cleanup];
+    [whisperInstance kill];
+    whisperInstance = nil;
+    initializerd = NO;
+    connectStatus = WMWhisperConnectionStatusDisconnected;
+
+    NSString *whisperDirectory = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"whisper"];
+    [[NSFileManager defaultManager] removeItemAtPath:whisperDirectory error:nil];
+}
+
+- (NSArray *)devices
+{
     return devices;
 }
 
 - (Device *)currentDevice
 {
-    if (currentDevice == nil) {
-        [self initialize];
-    }
-
     return currentDevice;
 }
 
@@ -176,7 +218,17 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
     return [whisperInstance removeFriend:device.deviceId error:error];
 }
 
+- (WMWhisperUserInfo *)selfInfo
+{
+    return [whisperInstance getSelfUserInfo:nil];
+}
+
 #pragma mark - WMWhisperDelegate
+
+//- (void)whisperWillBecomeIdle:(WMWhisper * _Nonnull)whisper
+//{
+//    NSLog(@"whisperWillBecomeIdle");
+//}
 
 - (void)whisper:(WMWhisper *)whisper connectionStatusDidChange:(enum WMWhisperConnectionStatus)newStatus
 {
@@ -194,7 +246,9 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceListUpdated object:nil userInfo:nil];
 
         if ([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
-            [MBProgressHUD showToast:NSLocalizedString(@"连接服务器失败", nil) inView:[UIApplication sharedApplication].delegate.window duration:3 animated:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD showToast:NSLocalizedString(@"连接服务器失败", nil) inView:[UIApplication sharedApplication].delegate.window duration:3 animated:YES];
+            });
         }
     }
 }
@@ -208,11 +262,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
         [whisper setSelfUserInfo:selfInfo error:nil];
     }
 
-    WMWhisperSessionManagerOptions *options = [[WMWhisperSessionManagerOptions alloc] initWithTransports:WMWhisperTransportOptionICE | WMWhisperTransportOptionTCP];
-    options.stunServer = STUN_SERVER;
-    options.turnServer = TURN_SERVER;
-    options.turnUsername = TURN_USERNAME;
-    options.turnPassword = TURN_PASSWORD;
+    WMWhisperSessionManagerOptions *options = [[WMWhisperSessionManagerOptions alloc] initWithTransports:WMWhisperTransportOptionTCP];
     [WMWhisperSessionManager getInstance:whisper withOptions:options error:nil];
 
     [self.currentDevice connect];
@@ -221,6 +271,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 - (void)whisper:(WMWhisper *)whisper selfUserInfoDidChange:(WMWhisperUserInfo *)newInfo
 {
     NSLog(@"selfUserInfoDidChange : %@", newInfo);
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSelfInfoUpdated object:newInfo userInfo:nil];
 }
 
 - (void)whisper:(WMWhisper *)whisper didReceiveFriendsList:(NSArray<WMWhisperFriendInfo *> *)friends

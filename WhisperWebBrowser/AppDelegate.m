@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "DeviceManager.h"
+#import "LoginViewController.h"
 #import <NetworkExtension/NetworkExtension.h>
 
 @interface AppDelegate ()
@@ -21,7 +21,22 @@
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-1000, -1000) forBarMetrics:UIBarMetricsDefault];
-    [DeviceManager sharedManager];
+
+    if (self.window == nil)
+    {
+        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    }
+
+    if ([DeviceManager sharedManager].username) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.window.rootViewController = [storyboard instantiateInitialViewController];
+    }
+    else {
+        LoginViewController * loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+        self.window.rootViewController = loginVC;
+    }
+
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

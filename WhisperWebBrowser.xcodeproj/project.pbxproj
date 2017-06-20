@@ -17,6 +17,9 @@
 		170EC31A1CC0D6E2008A4721 /* DeviceChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */; };
 		170EC3231CC0D76B008A4721 /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */; };
 		17788A311EF271D10031631E /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 17788A2F1EF271D10031631E /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1783A2671EF3BEC300C14D67 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A2651EF3BEC300C14D67 /* LoginViewController.m */; };
+		1783A26B1EF3BF1700C14D67 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783A2691EF3BF1700C14D67 /* LoginViewController.xib */; };
+		1783A26E1EF7968B00C14D67 /* SelfInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A26D1EF7968B00C14D67 /* SelfInfoViewController.m */; };
 		1797C0DF1CC0D92600A440E8 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0DE1CC0D92600A440E8 /* DeviceManager.m */; };
 		1797C0E21CC0DA5200A440E8 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E11CC0DA5200A440E8 /* Device.m */; };
 		1797C0E71CC0F40400A440E8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E61CC0F40400A440E8 /* MBProgressHUD.m */; };
@@ -59,6 +62,11 @@
 		170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
 		17788A2E1EF271D10031631E /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		17788A2F1EF271D10031631E /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		1783A2641EF3BEC300C14D67 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		1783A2651EF3BEC300C14D67 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		1783A26A1EF3BF1700C14D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoginViewController.xib; sourceTree = "<group>"; };
+		1783A26C1EF7968B00C14D67 /* SelfInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelfInfoViewController.h; sourceTree = "<group>"; };
+		1783A26D1EF7968B00C14D67 /* SelfInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelfInfoViewController.m; sourceTree = "<group>"; };
 		1797C0DD1CC0D92600A440E8 /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
 		1797C0DE1CC0D92600A440E8 /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
 		1797C0E01CC0DA5200A440E8 /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
@@ -114,16 +122,21 @@
 				1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */,
 				170EC2FB1CBF44C5008A4721 /* AppDelegate.h */,
 				170EC2FC1CBF44C5008A4721 /* AppDelegate.m */,
+				1783A2641EF3BEC300C14D67 /* LoginViewController.h */,
+				1783A2651EF3BEC300C14D67 /* LoginViewController.m */,
 				170EC2FE1CBF44C5008A4721 /* WebViewController.h */,
 				170EC2FF1CBF44C5008A4721 /* WebViewController.m */,
+				1783A26C1EF7968B00C14D67 /* SelfInfoViewController.h */,
+				1783A26D1EF7968B00C14D67 /* SelfInfoViewController.m */,
 				170EC3181CC0D6E2008A4721 /* DeviceChooseViewController.h */,
 				170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */,
 				170016F11CD8436C00D87014 /* DeviceSettingViewController.h */,
 				170016F21CD8436C00D87014 /* DeviceSettingViewController.m */,
 				170EC31F1CC0D76B008A4721 /* AddDeviceViewController.h */,
 				170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */,
-				170EC3011CBF44C5008A4721 /* Main.storyboard */,
 				170EC3061CBF44C5008A4721 /* LaunchScreen.storyboard */,
+				1783A2691EF3BF1700C14D67 /* LoginViewController.xib */,
+				170EC3011CBF44C5008A4721 /* Main.storyboard */,
 				170EC3091CBF44C5008A4721 /* Info.plist */,
 				170EC2F81CBF44C5008A4721 /* Supporting Files */,
 			);
@@ -235,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1783A26B1EF3BF1700C14D67 /* LoginViewController.xib in Resources */,
 				17BEC15B1EEE904800BECB2F /* whisper.pem in Resources */,
 				170EC3081CBF44C5008A4721 /* LaunchScreen.storyboard in Resources */,
 				170EC3051CBF44C5008A4721 /* Assets.xcassets in Resources */,
@@ -274,8 +288,10 @@
 				170EC3231CC0D76B008A4721 /* AddDeviceViewController.m in Sources */,
 				1797C0DF1CC0D92600A440E8 /* DeviceManager.m in Sources */,
 				17788A311EF271D10031631E /* AsyncSocket.m in Sources */,
+				1783A2671EF3BEC300C14D67 /* LoginViewController.m in Sources */,
 				1797C0E71CC0F40400A440E8 /* MBProgressHUD.m in Sources */,
 				170016F31CD8436C00D87014 /* DeviceSettingViewController.m in Sources */,
+				1783A26E1EF7968B00C14D67 /* SelfInfoViewController.m in Sources */,
 				170EC31A1CC0D6E2008A4721 /* DeviceChooseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +313,14 @@
 				170EC3071CBF44C5008A4721 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		1783A2691EF3BF1700C14D67 /* LoginViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1783A26A1EF3BF1700C14D67 /* Base */,
+			);
+			name = LoginViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -404,7 +428,7 @@
 				INFOPLIST_FILE = WhisperWebBrowser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.WhisperWebBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.WebBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -425,7 +449,7 @@
 				INFOPLIST_FILE = WhisperWebBrowser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.WhisperWebBrowser;
+				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.WebBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

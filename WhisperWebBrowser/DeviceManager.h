@@ -10,13 +10,22 @@
 #import "Device.h"
 
 #define kNotificationDeviceListUpdated      @"kNotificationDeviceListUpdated"
+#define kNotificationSelfInfoUpdated        @"kNotificationSelfInfoUpdated"
 
 @interface DeviceManager : NSObject
 
+@property (nonatomic, strong, readonly) NSString *username;
+@property (nonatomic, strong, readonly) WMWhisperUserInfo *selfInfo;
 @property (nonatomic, strong, readonly) NSArray *devices;
 @property (nonatomic, strong) Device *currentDevice;
 
 + (DeviceManager *)sharedManager;
+
+- (void)login:(NSString *)username
+     password:(NSString *)password
+   completion:(void (^)(NSError *error))completion;
+
+- (void)logout;
 
 - (BOOL)setDeviceLabel:(Device *)device
               newLabel:(NSString *)newLabel
