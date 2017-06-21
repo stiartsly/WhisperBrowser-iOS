@@ -9,6 +9,7 @@
 #import "Device.h"
 #import "AsyncSocket.h"
 
+static NSString * const KEY_Protocol = @"transportProtocol";
 static NSString * const KEY_Service = @"portForwardingService";
 
 @interface Device () <WMWhisperStreamDelegate>
@@ -34,12 +35,21 @@ static NSString * const KEY_Service = @"portForwardingService";
         
         NSDictionary *deviceConfig = [[NSUserDefaults standardUserDefaults] objectForKey:self.deviceId];
         if (deviceConfig) {
+            NSNumber *protocol = deviceConfig[KEY_Protocol];
+            if (protocol) {
+                _protocol = protocol.integerValue;
+            }
+            else {
+                _protocol = WMWhisperTransportTypeTCP;
+            }
+
             _service = deviceConfig[KEY_Service];
             if (_service == nil) {
                 _service = @"web";
             }
         }
         else {
+            _protocol = WMWhisperTransportTypeTCP;
             _service = @"web";
         }
     }
@@ -90,7 +100,7 @@ static NSString * const KEY_Service = @"portForwardingService";
         }
 
         NSError *error = nil;
-        _session = [sessionManager newSessionTo:self.deviceId transport:WMWhisperTransportTypeTCP error:&error];
+        _session = [sessionManager newSessionTo:self.deviceId transport:self.protocol error:&error];
         if (_session == nil) {
             NSLog(@"Create session error: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
@@ -99,18 +109,22 @@ static NSString * const KEY_Service = @"portForwardingService";
     }
 
     if (_stream == nil) {
+        WMWhisperStreamOptions options = WMWhisperStreamOptionEncrypt | WMWhisperStreamOptionMultiplexing | WMWhisperStreamOptionPortForwarding;
+        if (_protocol == WMWhisperTransportTypeICE) {
+            options |= WMWhisperStreamOptionReliable;
+        }
+
         NSError *error = nil;
-        _stream = [_session addStreamWithType:WMWhisperStreamTypeApplication
-                                      options:WMWhisperStreamOptionEncrypt | WMWhisperStreamOptionMultiplexing | WMWhisperStreamOptionPortForwarding
-                                     delegate:self
-                                        error:&error];
+        _stream = [_session addStreamWithType:WMWhisperStreamTypeApplication options:options delegate:self error:&error];
         if (_stream == nil) {
             NSLog(@"Add stream error: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
             return NO;
         }
-        
-        [self sendInviteRequest];
+
+        if (_protocol != WMWhisperTransportTypeICE) {
+            [self sendInviteRequest];
+        }
     }
     else if (_state == WMWhisperStreamStateInitialized || _state == WMWhisperStreamStateTransportReady) {
         [self sendInviteRequest];
@@ -151,37 +165,60 @@ static NSString * const KEY_Service = @"portForwardingService";
     }
 }
 
+- (void)setProtocol:(WMWhisperTransportType)protocol
+{
+    if (_protocol == protocol) {
+        return;
+    }
+
+    _protocol = protocol;
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *deviceConfig = [[userDefaults objectForKey:self.deviceId] mutableCopy];
+    if (deviceConfig == nil) {
+        deviceConfig = [NSMutableDictionary dictionaryWithCapacity:1];
+    }
+    deviceConfig[KEY_Protocol] = @(protocol);
+    [userDefaults setObject:deviceConfig forKey:self.deviceId];
+    [userDefaults synchronize];
+
+    [self disconnect];
+    [self connect];
+}
+
 - (void)setService:(NSString *)service
 {
     if (_service.length == 0) {
         return;
     }
 
-    if (![_service isEqualToString:service]) {
-        _service = service;
+    if ([_service isEqualToString:service]) {
+        return;
+    }
 
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSMutableDictionary *deviceConfig = [[userDefaults objectForKey:self.deviceId] mutableCopy];
-        if (deviceConfig == nil) {
-            deviceConfig = [NSMutableDictionary dictionaryWithCapacity:1];
-        }
-        deviceConfig[KEY_Service] = service;
-        [userDefaults setObject:deviceConfig forKey:self.deviceId];
-        [userDefaults synchronize];
-        
-        if (_localPort > 0) {
-            _localPort = 0;
+    _service = service;
 
-            NSError *error = nil;
-            if (![_stream closePortForwarding:_portForwardingID error:&error]) {
-                NSLog(@"Close port forwarding error: %@", error);
-            }
-            _portForwardingID = -1;
-        }
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *deviceConfig = [[userDefaults objectForKey:self.deviceId] mutableCopy];
+    if (deviceConfig == nil) {
+        deviceConfig = [NSMutableDictionary dictionaryWithCapacity:1];
+    }
+    deviceConfig[KEY_Service] = service;
+    [userDefaults setObject:deviceConfig forKey:self.deviceId];
+    [userDefaults synchronize];
+    
+    if (_localPort > 0) {
+        _localPort = 0;
 
-        if (_state == WMWhisperStreamStateConnected) {
-            [self openPortForwarding];
+        NSError *error = nil;
+        if (![_stream closePortForwarding:_portForwardingID error:&error]) {
+            NSLog(@"Close port forwarding error: %@", error);
         }
+        _portForwardingID = -1;
+    }
+
+    if (_state == WMWhisperStreamStateConnected) {
+        [self openPortForwarding];
     }
 }
 

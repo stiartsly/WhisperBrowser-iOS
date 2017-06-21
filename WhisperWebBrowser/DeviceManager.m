@@ -13,6 +13,10 @@ static NSString * const APP_KEY = @"6tzPPAgSACJdScX79wuzMNPQTWkRLZ4qEdhLcZU6q4B9
 
 static NSString * const API_SERVER = @"https://whisper.freeddns.org:8443/web/api";
 static NSString * const MQTT_SERVER = @"ssl://whisper.freeddns.org:8883";
+static NSString * const STUN_SERVER = @"whisper.freeddns.org";
+static NSString * const TURN_SERVER = @"whisper.freeddns.org";
+static NSString * const TURN_USERNAME = @"whisper";
+static NSString * const TURN_PASSWORD = @"io2016whisper";
 
 static NSString * const KEY_Username = @"username";
 static NSString * const KEY_SelfIdentifier = @"selfIdentifier";
@@ -53,8 +57,19 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
         if (_username) {
             [self login:_username password:nil completion:nil];
         }
+        else {
+            [self checkNetworkConnection];
+        }
     }
     return self;
+}
+
+- (void)checkNetworkConnection
+{
+    NSURL *url = [NSURL URLWithString:[API_SERVER stringByAppendingString:@"/version"]];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:3];
+    NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:nil];
+    [[urlSession dataTaskWithRequest:urlRequest] resume];
 }
 
 - (void)login:(NSString *)username password:(NSString *)password completion:(void (^)(NSError *error))completion
@@ -262,7 +277,12 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
         [whisper setSelfUserInfo:selfInfo error:nil];
     }
 
-    WMWhisperSessionManagerOptions *options = [[WMWhisperSessionManagerOptions alloc] initWithTransports:WMWhisperTransportOptionTCP];
+    WMWhisperSessionManagerOptions *options = [[WMWhisperSessionManagerOptions alloc] initWithTransports:
+                                               WMWhisperTransportOptionICE | WMWhisperTransportOptionUDP | WMWhisperTransportOptionTCP];
+    options.stunHost = STUN_SERVER;
+    options.turnHost = TURN_SERVER;
+    options.turnUsername = TURN_USERNAME;
+    options.turnPassword = TURN_PASSWORD;
     [WMWhisperSessionManager getInstance:whisper withOptions:options error:nil];
 
     [self.currentDevice connect];

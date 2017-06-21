@@ -18,6 +18,7 @@
 @property (nonatomic, strong, readonly) NSString *deviceName;
 @property (nonatomic, assign, readonly) BOOL isOnline;
 
+@property (nonatomic, assign) WMWhisperTransportType protocol;
 @property (nonatomic, strong) NSString *service;
 @property (nonatomic, assign, readonly) int localPort;
 

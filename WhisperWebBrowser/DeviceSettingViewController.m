@@ -10,7 +10,9 @@
 #import "DeviceManager.h"
 
 @interface DeviceSettingViewController () <UITextFieldDelegate>
-
+{
+    UITextField *serviceTextField;
+}
 @end
 
 @implementation DeviceSettingViewController
@@ -61,7 +63,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return section == 0 ? 3 : 1;
+    return section == 0 ? 4 : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,7 +79,9 @@
     if (indexPath.section == 0) {
         UITextField *textField = (UITextField*)cell.accessoryView;
         if (textField == nil) {
-            textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width - 120, 50)];
+            CGFloat witdh = tableView.bounds.size.width - 120;
+            if (witdh > 500) witdh = 500;
+            textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, witdh, 50)];
             textField.font = [UIFont systemFontOfSize:14.0f];
             textField.textAlignment = NSTextAlignmentRight;
             textField.delegate = self;
@@ -101,14 +105,29 @@
                 textField.textColor = UIColorFromRGB(0x666666);
                 textField.enabled = NO;
                 break;
-                
+
             case 2:
+                cell.textLabel.text = @"协议";
+                textField.textColor = [UIColor blackColor];
+                textField.enabled = NO;
+                if (self.device.protocol == WMWhisperTransportTypeTCP) {
+                    textField.text = @"TCP";
+                }
+                else if (self.device.protocol == WMWhisperTransportTypeUDP) {
+                    textField.text = @"UDP";
+                }
+                else {
+                    textField.text = @"ICE";
+                }
+                break;
+                
+            case 3:
                 cell.textLabel.text = @"服务";
                 textField.text = self.device.service;
                 textField.textColor = [UIColor blackColor];
                 textField.keyboardType = UIKeyboardTypeNamePhonePad;
                 textField.enabled = YES;
-                textField.tag = 1;
+                serviceTextField = textField;
                 break;
         }
     }
@@ -124,6 +143,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [serviceTextField resignFirstResponder];
     
     if (indexPath.section == 1) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -138,6 +158,37 @@
             //[self.navigationController popViewControllerAnimated:YES];
         }
     }
+    else if (indexPath.row == 2) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *iceAction = [UIAlertAction actionWithTitle:@"ICE" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.device.protocol = WMWhisperTransportTypeICE;
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
+        UIAlertAction *tcpAction = [UIAlertAction actionWithTitle:@"TCP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.device.protocol = WMWhisperTransportTypeTCP;
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
+        UIAlertAction *udpAction = [UIAlertAction actionWithTitle:@"UDP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            self.device.protocol = WMWhisperTransportTypeUDP;
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:iceAction];
+        [alertController addAction:tcpAction];
+        [alertController addAction:udpAction];
+
+        UIPopoverPresentationController *popover = alertController.popoverPresentationController;
+        if (popover != nil) {
+            UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+            popover.sourceView = cell;
+            popover.sourceRect = cell.bounds;
+            popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self presentViewController:alertController animated:YES completion:nil];
+        });
+    }
 }
 
 #pragma mark - UITextFieldDelegate
@@ -151,7 +202,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField.tag == 1) {
+    if (textField == serviceTextField) {
         self.device.service = textField.text;
         if (self.device == [DeviceManager sharedManager].currentDevice) {
             [self.device connect];
