@@ -18,7 +18,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+# if DEBUG == 1
+    [BuglyLog initLogger:BuglyLogLevelVerbose consolePrint:YES];
+#else
+    BuglyConfig *config = [[BuglyConfig alloc] init];
+    config.reportLogLevel = BuglyLogLevelInfo;
+    [Bugly startWithAppId:@"9dc9b11a50" config:config];
+#endif
+
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-1000, -1000) forBarMetrics:UIBarMetricsDefault];
 

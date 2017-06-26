@@ -88,7 +88,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
             if (![[NSFileManager defaultManager] fileExistsAtPath:whisperDirectory]) {
                 NSURL *url = [NSURL fileURLWithPath:whisperDirectory];
                 if (![[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:&error]) {
-                    NSLog(@"Create whisper persistent directory failed: %@", error);
+                    BLYLogError(@"Create whisper persistent directory failed: %@", error);
                     connectStatus = WMWhisperConnectionStatusDisconnected;
                     if (completion) {
                         completion(error);
@@ -124,7 +124,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
             whisperInstance = [WMWhisper getInstanceWithOptions:options delegate:self error:&error];
             if (whisperInstance == nil) {
-                NSLog(@"Create whisper instance failed: %@", error);
+                BLYLogError(@"Create whisper instance failed: %@", error);
                 connectStatus = WMWhisperConnectionStatusDisconnected;
                 if (completion) {
                     completion(error);
@@ -142,7 +142,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
             devices = [[NSMutableArray alloc] init];
         }
         else {
-            NSLog(@"Start whisper instance failed: %@", error);
+            BLYLogError(@"Start whisper instance failed: %@", error);
             [whisperInstance kill];
             whisperInstance == nil;
             connectStatus = WMWhisperConnectionStatusDisconnected;
@@ -219,7 +219,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
         return NO;
     }
 
-    if (err.code == 0x8100000C) {
+    if (err.code == 0x100000C) {
         return YES;
     }
 
@@ -242,12 +242,12 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
 //- (void)whisperWillBecomeIdle:(WMWhisper * _Nonnull)whisper
 //{
-//    NSLog(@"whisperWillBecomeIdle");
+//    BLYLogDebug(@"whisperWillBecomeIdle");
 //}
 
 - (void)whisper:(WMWhisper *)whisper connectionStatusDidChange:(enum WMWhisperConnectionStatus)newStatus
 {
-    NSLog(@"connectionStatusDidChange : %d", (int)newStatus);
+    BLYLogInfo(@"connectionStatusDidChange : %d", (int)newStatus);
     connectStatus = newStatus;
 
     if (connectStatus == WMWhisperConnectionStatusDisconnected) {
@@ -270,7 +270,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
 - (void)whisperDidBecomeReady:(WMWhisper *)whisper
 {
-    NSLog(@"didBecomeReady");
+    BLYLogInfo(@"didBecomeReady");
     WMWhisperUserInfo *selfInfo = [whisper getSelfUserInfo:nil];
     if (selfInfo.name.length == 0) {
         selfInfo.name = [UIDevice currentDevice].name;
@@ -290,13 +290,13 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
 - (void)whisper:(WMWhisper *)whisper selfUserInfoDidChange:(WMWhisperUserInfo *)newInfo
 {
-    NSLog(@"selfUserInfoDidChange : %@", newInfo);
+    BLYLogInfo(@"selfUserInfoDidChange : %@", newInfo);
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationSelfInfoUpdated object:newInfo userInfo:nil];
 }
 
 - (void)whisper:(WMWhisper *)whisper didReceiveFriendsList:(NSArray<WMWhisperFriendInfo *> *)friends
 {
-    NSLog(@"didReceiveFriendsList : %@", friends);
+    BLYLogInfo(@"didReceiveFriendsList : %@", friends);
 
     NSString *savedDeviceId = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_CurrentDeviceId];
 
@@ -327,7 +327,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
 - (void)whisper:(WMWhisper *)whisper friendInfoDidChange:(NSString *)friendId newInfo:(WMWhisperFriendInfo *)newInfo
 {
-    NSLog(@"friendInfoDidChange : %@", newInfo);
+    BLYLogInfo(@"friendInfoDidChange : %@", newInfo);
     for (Device *device in devices) {
         if ([device.deviceId isEqual:friendId]) {
             [device performSelector:@selector(setDeviceInfo:) withObject:newInfo];
@@ -339,7 +339,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
 - (void)whisper:(WMWhisper *)whisper friendPresenceDidChange:(NSString *)friendId newPresence:(NSString *)newPresence
 {
-    NSLog(@"friendPresenceDidChange, userId : %@, newPresence : %@", friendId, newPresence);
+    BLYLogInfo(@"friendPresenceDidChange, userId : %@, newPresence : %@", friendId, newPresence);
     for (Device *device in devices) {
         if ([device.deviceId isEqual:friendId]) {
             device.deviceInfo.presence = newPresence;
@@ -362,17 +362,17 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
 - (void)whisper:(WMWhisper *)whisper didReceiveFriendRequestFromUser:(NSString *)userId withUserInfo:(WMWhisperUserInfo *)userInfo hello:(NSString *)hello
 {
-    NSLog(@"didReceiveFriendRequestFromUser, userId : %@", userId);
+    BLYLogInfo(@"didReceiveFriendRequestFromUser, userId : %@", userId);
 }
 
 - (void)whisper:(WMWhisper *)whisper didReceiveFriendResponseFromUser:(NSString *)userId withStatus:(NSInteger)status reason:(NSString *)reason entrusted:(BOOL)entrusted expire:(NSString *)expire
 {
-    NSLog(@"didReceiveFriendResponseFromUser, userId : %@, status : %d, reason: %@", userId, (int)status, reason);
+    BLYLogInfo(@"didReceiveFriendResponseFromUser, userId : %@, status : %d, reason: %@", userId, (int)status, reason);
 }
 
 - (void)whisper:(WMWhisper *)whisper newFriendAdded:(WMWhisperFriendInfo *)newFriend
 {
-    NSLog(@"newFriendAdded : %@", newFriend);
+    BLYLogInfo(@"newFriendAdded : %@", newFriend);
     Device *device = [[Device alloc] initWithDeviceInfo:newFriend];
     [devices addObject:device];
     if (self.currentDevice == nil) {

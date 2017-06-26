@@ -137,6 +137,7 @@
                     [_webView reload];
                 }
                 else {
+                    self.title = nil;
                     NSString *urlString = [NSString stringWithFormat:@"http://localhost:%d", [DeviceManager sharedManager].currentDevice.localPort];
                     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
                 }
@@ -154,10 +155,12 @@
     int port = [DeviceManager sharedManager].currentDevice.localPort;
     if (port > 0)
     {
+        self.title = nil;
         urlString = [NSString stringWithFormat:@"http://localhost:%d", port];
     }
     else if (_webView.URL != nil)
     {
+        self.title = nil;
         urlString = @"about:blank";
     }
     
@@ -210,7 +213,7 @@
             }
             else if ([keyPath isEqualToString:@"estimatedProgress"]) {
                 float progress = [change[NSKeyValueChangeNewKey] floatValue];
-                NSLog(@"progress: %f", progress);
+                BLYLogVerbose(@"progress: %f", progress);
                 [_progressView setProgress:progress animated:YES];
                 if (progress >= 1.0) {
                     [UIView animateWithDuration:0.0 delay:0.2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -260,13 +263,13 @@
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {
-    NSLog(@"webView:didFailProvisionalNavigation:withError: %@", error);
+    BLYLogError(@"webView:didFailProvisionalNavigation:withError: %@", error);
     [MBProgressHUD showToast:NSLocalizedString(@"页面加载失败", nil) inView:[UIApplication sharedApplication].delegate.window duration:3 animated:YES];
 }
 
 - (void)webView: (WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error
 {
-    NSLog(@"webView:didFailNavigation:withError: %@", error);
+    BLYLogError(@"webView:didFailNavigation:withError: %@", error);
 }
 
 #pragma mark- WKUIDelegate

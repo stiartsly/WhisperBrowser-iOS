@@ -102,7 +102,7 @@ static NSString * const KEY_Service = @"portForwardingService";
         NSError *error = nil;
         _session = [sessionManager newSessionTo:self.deviceId transport:self.protocol error:&error];
         if (_session == nil) {
-            NSLog(@"Create session error: %@", error);
+            BLYLogError(@"Create session error: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
             return NO;
         }
@@ -117,7 +117,7 @@ static NSString * const KEY_Service = @"portForwardingService";
         NSError *error = nil;
         _stream = [_session addStreamWithType:WMWhisperStreamTypeApplication options:options delegate:self error:&error];
         if (_stream == nil) {
-            NSLog(@"Add stream error: %@", error);
+            BLYLogError(@"Add stream error: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
             return NO;
         }
@@ -148,13 +148,13 @@ static NSString * const KEY_Service = @"portForwardingService";
 
             if (_portForwardingID >= 0) {
                 if (![_stream closePortForwarding:_portForwardingID error:&error]) {
-                    NSLog(@"Close port forwarding error: %@", error);
+                    BLYLogError(@"Close port forwarding error: %@", error);
                 }
                 _portForwardingID = -1;
             }
 
             if (![_session removeStream:_stream error:&error]) {
-                NSLog(@"Remove stream error: %@", error);
+                BLYLogError(@"Remove stream error: %@", error);
             }
             _stream = nil;
         }
@@ -212,7 +212,7 @@ static NSString * const KEY_Service = @"portForwardingService";
 
         NSError *error = nil;
         if (![_stream closePortForwarding:_portForwardingID error:&error]) {
-            NSLog(@"Close port forwarding error: %@", error);
+            BLYLogError(@"Close port forwarding error: %@", error);
         }
         _portForwardingID = -1;
     }
@@ -234,10 +234,10 @@ static NSString * const KEY_Service = @"portForwardingService";
     uint16_t localPort = 0;
     if ([asyncSocket acceptOnInterface:@"127.0.0.1" port:0 error:error]) {
         localPort = [asyncSocket localPort];
-        NSLog(@"localPort: %d", localPort);
+        BLYLogInfo(@"localPort: %d", localPort);
         [asyncSocket disconnect];
     } else {
-        NSLog(@"Get free localPort failed: %@", *error);
+        BLYLogError(@"Get free localPort failed: %@", *error);
     }
     
     return localPort;
@@ -255,16 +255,16 @@ static NSString * const KEY_Service = @"portForwardingService";
               if (status == 0) {
                   NSError *error = nil;
                   if (![session startWithRemoteSdp:sdp error:&error]) {
-                      NSLog(@"Start session error: %@", error);
+                      BLYLogError(@"Start session error: %@", error);
                       [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
                   }
               }
               else {
-                  NSLog(@"Remote refused session invite: %d, sdp: %@", (int)status, reason);
+                  BLYLogWarn(@"Remote refused session invite: %d, sdp: %@", (int)status, reason);
                   [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:nil];
               }
           } error:&error]) {
-              NSLog(@"Session send invite request error: %@", error);
+              BLYLogError(@"Session send invite request error: %@", error);
               [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
           }
 }
@@ -286,11 +286,11 @@ static NSString * const KEY_Service = @"portForwardingService";
     if (portForwarding) {
         _portForwardingID = portForwarding.integerValue;
         _localPort = localPort;
-        NSLog(@"Success to open port forwarding : %d, loacl port : %d", (int)_portForwardingID, localPort);
+        BLYLogInfo(@"Success to open port forwarding : %d, loacl port : %d", (int)_portForwardingID, localPort);
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnected object:self userInfo:nil];
     }
     else {
-        NSLog(@"Open port forwarding error: %@", error);
+        BLYLogError(@"Open port forwarding error: %@", error);
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
     }
 }
@@ -298,7 +298,7 @@ static NSString * const KEY_Service = @"portForwardingService";
 #pragma mark - ECSSessionDelegate
 - (void)whisperStream:(WMWhisperStream *)stream stateDidChange:(enum WMWhisperStreamState)newState
 {
-    NSLog(@"Stream state: %d", (int)newState);
+    BLYLogInfo(@"Stream state: %d", (int)newState);
 
     if (stream != _stream || _state < 0) {
         return;

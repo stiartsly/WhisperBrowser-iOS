@@ -16,6 +16,7 @@
 		170EC3081CBF44C5008A4721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3061CBF44C5008A4721 /* LaunchScreen.storyboard */; };
 		170EC31A1CC0D6E2008A4721 /* DeviceChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */; };
 		170EC3231CC0D76B008A4721 /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */; };
+		17148FBC1F009EE4007421C3 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17148FBB1F009EE4007421C3 /* Bugly.framework */; };
 		17788A311EF271D10031631E /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 17788A2F1EF271D10031631E /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1783A2671EF3BEC300C14D67 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A2651EF3BEC300C14D67 /* LoginViewController.m */; };
 		1783A26B1EF3BF1700C14D67 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783A2691EF3BF1700C14D67 /* LoginViewController.xib */; };
@@ -60,6 +61,7 @@
 		170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceChooseViewController.m; sourceTree = "<group>"; };
 		170EC31F1CC0D76B008A4721 /* AddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
 		170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDeviceViewController.m; sourceTree = "<group>"; };
+		17148FBB1F009EE4007421C3 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		17788A2E1EF271D10031631E /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		17788A2F1EF271D10031631E /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		1783A2641EF3BEC300C14D67 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17148FBC1F009EE4007421C3 /* Bugly.framework in Frameworks */,
 				17C425B31EEA9505002FBBE9 /* ManagedWhisper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,6 +186,7 @@
 		17C425AC1EEA94BF002FBBE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				17148FBB1F009EE4007421C3 /* Bugly.framework */,
 				17C425AD1EEA94C4002FBBE9 /* ManagedWhisper.framework */,
 			);
 			name = Frameworks;
