@@ -28,6 +28,27 @@
 		17BEC15B1EEE904800BECB2F /* whisper.pem in Resources */ = {isa = PBXBuildFile; fileRef = 17BEC15A1EEE904800BECB2F /* whisper.pem */; };
 		17C425B31EEA9505002FBBE9 /* ManagedWhisper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C425AD1EEA94C4002FBBE9 /* ManagedWhisper.framework */; };
 		17C425B41EEA9505002FBBE9 /* ManagedWhisper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17C425AD1EEA94C4002FBBE9 /* ManagedWhisper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		17C5361A1F02375200482E31 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */; };
+		17C5361B1F02375200482E31 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2FF1CBF44C5008A4721 /* WebViewController.m */; };
+		17C5361C1F02375200482E31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2FC1CBF44C5008A4721 /* AppDelegate.m */; };
+		17C5361D1F02375200482E31 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E11CC0DA5200A440E8 /* Device.m */; };
+		17C5361E1F02375200482E31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2F91CBF44C5008A4721 /* main.m */; };
+		17C5361F1F02375200482E31 /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */; };
+		17C536201F02375200482E31 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0DE1CC0D92600A440E8 /* DeviceManager.m */; };
+		17C536211F02375200482E31 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 17788A2F1EF271D10031631E /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		17C536221F02375200482E31 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A2651EF3BEC300C14D67 /* LoginViewController.m */; };
+		17C536231F02375200482E31 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E61CC0F40400A440E8 /* MBProgressHUD.m */; };
+		17C536241F02375200482E31 /* DeviceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170016F21CD8436C00D87014 /* DeviceSettingViewController.m */; };
+		17C536251F02375200482E31 /* SelfInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A26D1EF7968B00C14D67 /* SelfInfoViewController.m */; };
+		17C536261F02375200482E31 /* DeviceChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */; };
+		17C536281F02375200482E31 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17148FBB1F009EE4007421C3 /* Bugly.framework */; };
+		17C536291F02375200482E31 /* ManagedWhisper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C425AD1EEA94C4002FBBE9 /* ManagedWhisper.framework */; };
+		17C5362B1F02375200482E31 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783A2691EF3BF1700C14D67 /* LoginViewController.xib */; };
+		17C5362C1F02375200482E31 /* whisper.pem in Resources */ = {isa = PBXBuildFile; fileRef = 17BEC15A1EEE904800BECB2F /* whisper.pem */; };
+		17C5362D1F02375200482E31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3061CBF44C5008A4721 /* LaunchScreen.storyboard */; };
+		17C5362E1F02375200482E31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3041CBF44C5008A4721 /* Assets.xcassets */; };
+		17C5362F1F02375200482E31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3011CBF44C5008A4721 /* Main.storyboard */; };
+		17C536311F02375200482E31 /* ManagedWhisper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17C425AD1EEA94C4002FBBE9 /* ManagedWhisper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +59,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				17C425B41EEA9505002FBBE9 /* ManagedWhisper.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C536301F02375200482E31 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				17C536311F02375200482E31 /* ManagedWhisper.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +112,10 @@
 		1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
 		17BEC15A1EEE904800BECB2F /* whisper.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = whisper.pem; sourceTree = "<group>"; };
 		17C425AD1EEA94C4002FBBE9 /* ManagedWhisper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ManagedWhisper.framework; sourceTree = "<group>"; };
+		17C536361F02375200482E31 /* FHBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17C5363C1F02394800482E31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17C5363D1F023D8200482E31 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		17C5363E1F023DDE00482E31 /* PrefixHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +128,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17C536271F02375200482E31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C536281F02375200482E31 /* Bugly.framework in Frameworks */,
+				17C536291F02375200482E31 /* ManagedWhisper.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -99,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				170EC2F71CBF44C5008A4721 /* WhisperWebBrowser */,
+				17C5363A1F02394800482E31 /* FHBrowser */,
 				1797C0E31CC0F40400A440E8 /* 3rds */,
 				17C425AC1EEA94BF002FBBE9 /* Frameworks */,
 				170EC2F61CBF44C5008A4721 /* Products */,
@@ -109,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				170EC2F51CBF44C5008A4721 /* WhisperWebBrowser.app */,
+				17C536361F02375200482E31 /* FHBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				1797C0E81CC4804F00A440E8 /* PrefixHeader.h */,
+				17C5363D1F023D8200482E31 /* Common.h */,
 				1797C0E01CC0DA5200A440E8 /* Device.h */,
 				1797C0E11CC0DA5200A440E8 /* Device.m */,
 				1797C0DD1CC0D92600A440E8 /* DeviceManager.h */,
@@ -192,6 +240,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		17C5363A1F02394800482E31 /* FHBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				17C5363C1F02394800482E31 /* Info.plist */,
+				17C5363E1F023DDE00482E31 /* PrefixHeader.h */,
+			);
+			path = FHBrowser;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -214,6 +271,25 @@
 			productReference = 170EC2F51CBF44C5008A4721 /* WhisperWebBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
+		17C536181F02375200482E31 /* FHBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17C536331F02375200482E31 /* Build configuration list for PBXNativeTarget "FHBrowser" */;
+			buildPhases = (
+				17C536191F02375200482E31 /* Sources */,
+				17C536271F02375200482E31 /* Frameworks */,
+				17C5362A1F02375200482E31 /* Resources */,
+				17C536301F02375200482E31 /* Embed Frameworks */,
+				17C536321F02375200482E31 /* Strip Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FHBrowser;
+			productName = WhisperWebBrowser;
+			productReference = 17C536361F02375200482E31 /* FHBrowser.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -227,6 +303,9 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 5935J43UU8;
 						ProvisioningStyle = Automatic;
+					};
+					17C536181F02375200482E31 = {
+						DevelopmentTeam = 5935J43UU8;
 					};
 				};
 			};
@@ -243,6 +322,7 @@
 			projectRoot = "";
 			targets = (
 				170EC2F41CBF44C5008A4721 /* WhisperWebBrowser */,
+				17C536181F02375200482E31 /* FHBrowser */,
 			);
 		};
 /* End PBXProject section */
@@ -260,10 +340,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17C5362A1F02375200482E31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C5362B1F02375200482E31 /* LoginViewController.xib in Resources */,
+				17C5362C1F02375200482E31 /* whisper.pem in Resources */,
+				17C5362D1F02375200482E31 /* LaunchScreen.storyboard in Resources */,
+				17C5362E1F02375200482E31 /* Assets.xcassets in Resources */,
+				17C5362F1F02375200482E31 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1769F9051EEE9B2E00DB877B /* Strip Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/ManagedWhisper.framework/strip-frameworks.sh\"";
+		};
+		17C536321F02375200482E31 /* Strip Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -297,6 +403,26 @@
 				170016F31CD8436C00D87014 /* DeviceSettingViewController.m in Sources */,
 				1783A26E1EF7968B00C14D67 /* SelfInfoViewController.m in Sources */,
 				170EC31A1CC0D6E2008A4721 /* DeviceChooseViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17C536191F02375200482E31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C5361A1F02375200482E31 /* UIImage+ImageWithColor.m in Sources */,
+				17C5361B1F02375200482E31 /* WebViewController.m in Sources */,
+				17C5361C1F02375200482E31 /* AppDelegate.m in Sources */,
+				17C5361D1F02375200482E31 /* Device.m in Sources */,
+				17C5361E1F02375200482E31 /* main.m in Sources */,
+				17C5361F1F02375200482E31 /* AddDeviceViewController.m in Sources */,
+				17C536201F02375200482E31 /* DeviceManager.m in Sources */,
+				17C536211F02375200482E31 /* AsyncSocket.m in Sources */,
+				17C536221F02375200482E31 /* LoginViewController.m in Sources */,
+				17C536231F02375200482E31 /* MBProgressHUD.m in Sources */,
+				17C536241F02375200482E31 /* DeviceSettingViewController.m in Sources */,
+				17C536251F02375200482E31 /* SelfInfoViewController.m in Sources */,
+				17C536261F02375200482E31 /* DeviceChooseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +553,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5935J43UU8;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				GCC_PREFIX_HEADER = WhisperWebBrowser/PrefixHeader.h;
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
 				GCC_WARN_UNUSED_VALUE = NO;
 				INFOPLIST_FILE = WhisperWebBrowser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -448,12 +574,56 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 5935J43UU8;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				GCC_PREFIX_HEADER = WhisperWebBrowser/PrefixHeader.h;
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
 				GCC_WARN_UNUSED_VALUE = NO;
 				INFOPLIST_FILE = WhisperWebBrowser/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.WebBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+		17C536341F02375200482E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5935J43UU8;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
+				GCC_WARN_UNUSED_VALUE = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/FHBrowser/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.FHBrowser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		17C536351F02375200482E31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5935J43UU8;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
+				GCC_WARN_UNUSED_VALUE = NO;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/FHBrowser/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.FHBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -477,6 +647,15 @@
 			buildConfigurations = (
 				170EC30D1CBF44C5008A4721 /* Debug */,
 				170EC30E1CBF44C5008A4721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17C536331F02375200482E31 /* Build configuration list for PBXNativeTarget "FHBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17C536341F02375200482E31 /* Debug */,
+				17C536351F02375200482E31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -21,6 +21,8 @@
 
 + (DeviceManager *)sharedManager;
 
+- (void)cleanup;
+
 - (void)login:(NSString *)username
      password:(NSString *)password
    completion:(void (^)(NSError *error))completion;

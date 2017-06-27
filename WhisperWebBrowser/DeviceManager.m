@@ -8,16 +8,6 @@
 
 #import "DeviceManager.h"
 
-static NSString * const APP_ID = @"7sRQjDsniyuHdZ9zsQU9DZbMLtQGLBWZ78yHWgjPpTKm";
-static NSString * const APP_KEY = @"6tzPPAgSACJdScX79wuzMNPQTWkRLZ4qEdhLcZU6q4B9";
-
-static NSString * const API_SERVER = @"https://whisper.freeddns.org:8443/web/api";
-static NSString * const MQTT_SERVER = @"ssl://whisper.freeddns.org:8883";
-static NSString * const STUN_SERVER = @"whisper.freeddns.org";
-static NSString * const TURN_SERVER = @"whisper.freeddns.org";
-static NSString * const TURN_USERNAME = @"whisper";
-static NSString * const TURN_PASSWORD = @"io2016whisper";
-
 static NSString * const KEY_Username = @"username";
 static NSString * const KEY_SelfIdentifier = @"selfIdentifier";
 static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
@@ -46,7 +36,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
     return instance;
 }
 
--(instancetype)init {
+- (instancetype)init {
     if (self = [super init]) {
         initializerd = NO;
         connectStatus = WMWhisperConnectionStatusDisconnected;
@@ -160,6 +150,14 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
     [[NSUserDefaults standardUserDefaults] synchronize];
     _username = nil;
 
+    [self cleanup];
+
+    NSString *whisperDirectory = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"whisper"];
+    [[NSFileManager defaultManager] removeItemAtPath:whisperDirectory error:nil];
+}
+
+- (void)cleanup
+{
     for (Device *device in devices) {
         [device disconnect];
     }
@@ -170,11 +168,9 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
     [[WMWhisperSessionManager getInstance] cleanup];
     [whisperInstance kill];
     whisperInstance = nil;
+
     initializerd = NO;
     connectStatus = WMWhisperConnectionStatusDisconnected;
-
-    NSString *whisperDirectory = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"whisper"];
-    [[NSFileManager defaultManager] removeItemAtPath:whisperDirectory error:nil];
 }
 
 - (NSArray *)devices

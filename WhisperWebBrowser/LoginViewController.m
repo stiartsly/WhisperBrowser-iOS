@@ -73,7 +73,7 @@
     [[DeviceManager sharedManager] login:self.usernameTextField.text password:self.passwordTextField.text completion:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
-                NSString *toast = (error.code == 0x81000007) ? @"用户名或密码错误" : @"登录失败";
+                NSString *toast = (error.code == 0x1000007) ? @"用户名或密码错误" : @"登录失败";
                 [MBProgressHUD showToast:toast inView:self.view duration:3 animated:YES];
             }
             else {

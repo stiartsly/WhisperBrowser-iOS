@@ -40,17 +40,17 @@ static NSString * const KEY_Service = @"portForwardingService";
                 _protocol = protocol.integerValue;
             }
             else {
-                _protocol = WMWhisperTransportTypeTCP;
+                _protocol = defaultProtocol;
             }
 
             _service = deviceConfig[KEY_Service];
             if (_service == nil) {
-                _service = @"web";
+                _service = defaultService;
             }
         }
         else {
-            _protocol = WMWhisperTransportTypeTCP;
-            _service = @"web";
+            _protocol = defaultProtocol;
+            _service = defaultService;
         }
     }
     return self;
