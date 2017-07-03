@@ -74,7 +74,12 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSError *error = nil;
         if (whisperInstance == nil) {
-            NSString *whisperDirectory = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"whisper"];
+#ifdef _INTERNAL_
+            NSString *directory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+#else
+            NSString *directory = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
+#endif
+            NSString *whisperDirectory = [directory stringByAppendingPathComponent:@"whisper"];
             if (![[NSFileManager defaultManager] fileExistsAtPath:whisperDirectory]) {
                 NSURL *url = [NSURL fileURLWithPath:whisperDirectory];
                 if (![[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:&error]) {
@@ -152,7 +157,12 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
     [self cleanup];
 
-    NSString *whisperDirectory = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:@"whisper"];
+#ifdef _INTERNAL_
+    NSString *directory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+#else
+    NSString *directory = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
+#endif
+    NSString *whisperDirectory = [directory stringByAppendingPathComponent:@"whisper"];
     [[NSFileManager defaultManager] removeItemAtPath:whisperDirectory error:nil];
 }
 

@@ -18,7 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-# if DEBUG == 1
+#if DEBUG == 1
     [BuglyLog initLogger:BuglyLogLevelVerbose consolePrint:YES];
 #else
     BuglyConfig *config = [[BuglyConfig alloc] init];
@@ -27,7 +27,7 @@
 #endif
 
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-1000, -1000) forBarMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-1000, 0) forBarMetrics:UIBarMetricsDefault];
 
     if (self.window == nil)
     {

@@ -203,7 +203,9 @@
 {
     if (object == [DeviceManager sharedManager]) {
         if ([keyPath isEqualToString:@"currentDevice"]) {
-            [self goHome];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self goHome];
+            });
         }
     }
     else if (object == _webView) {
