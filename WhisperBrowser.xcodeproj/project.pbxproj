@@ -79,7 +79,7 @@
 /* Begin PBXFileReference section */
 		170016F11CD8436C00D87014 /* DeviceSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceSettingViewController.h; sourceTree = "<group>"; };
 		170016F21CD8436C00D87014 /* DeviceSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingViewController.m; sourceTree = "<group>"; };
-		170EC2F51CBF44C5008A4721 /* WhisperWebBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhisperWebBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		170EC2F51CBF44C5008A4721 /* WhisperBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhisperBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		170EC2F91CBF44C5008A4721 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		170EC2FB1CBF44C5008A4721 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		170EC2FC1CBF44C5008A4721 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 		170EC2EC1CBF44C5008A4721 = {
 			isa = PBXGroup;
 			children = (
-				170EC2F71CBF44C5008A4721 /* WhisperWebBrowser */,
+				170EC2F71CBF44C5008A4721 /* WhisperBrowser */,
 				17C5363A1F02394800482E31 /* FHBrowser */,
 				1797C0E31CC0F40400A440E8 /* 3rds */,
 				17C425AC1EEA94BF002FBBE9 /* Frameworks */,
@@ -154,13 +154,13 @@
 		170EC2F61CBF44C5008A4721 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				170EC2F51CBF44C5008A4721 /* WhisperWebBrowser.app */,
+				170EC2F51CBF44C5008A4721 /* WhisperBrowser.app */,
 				17C536361F02375200482E31 /* FHBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		170EC2F71CBF44C5008A4721 /* WhisperWebBrowser */ = {
+		170EC2F71CBF44C5008A4721 /* WhisperBrowser */ = {
 			isa = PBXGroup;
 			children = (
 				1797C0E81CC4804F00A440E8 /* PrefixHeader.h */,
@@ -191,7 +191,7 @@
 				170EC3091CBF44C5008A4721 /* Info.plist */,
 				170EC2F81CBF44C5008A4721 /* Supporting Files */,
 			);
-			path = WhisperWebBrowser;
+			path = WhisperBrowser;
 			sourceTree = "<group>";
 		};
 		170EC2F81CBF44C5008A4721 /* Supporting Files */ = {
@@ -252,9 +252,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		170EC2F41CBF44C5008A4721 /* WhisperWebBrowser */ = {
+		170EC2F41CBF44C5008A4721 /* WhisperBrowser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 170EC30C1CBF44C5008A4721 /* Build configuration list for PBXNativeTarget "WhisperWebBrowser" */;
+			buildConfigurationList = 170EC30C1CBF44C5008A4721 /* Build configuration list for PBXNativeTarget "WhisperBrowser" */;
 			buildPhases = (
 				170EC2F11CBF44C5008A4721 /* Sources */,
 				170EC2F21CBF44C5008A4721 /* Frameworks */,
@@ -266,9 +266,9 @@
 			);
 			dependencies = (
 			);
-			name = WhisperWebBrowser;
-			productName = WhisperWebBrowser;
-			productReference = 170EC2F51CBF44C5008A4721 /* WhisperWebBrowser.app */;
+			name = WhisperBrowser;
+			productName = WhisperBrowser;
+			productReference = 170EC2F51CBF44C5008A4721 /* WhisperBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
 		17C536181F02375200482E31 /* FHBrowser */ = {
@@ -286,7 +286,7 @@
 			dependencies = (
 			);
 			name = FHBrowser;
-			productName = WhisperWebBrowser;
+			productName = FHBrowser;
 			productReference = 17C536361F02375200482E31 /* FHBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -309,7 +309,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 170EC2F01CBF44C5008A4721 /* Build configuration list for PBXProject "WhisperWebBrowser" */;
+			buildConfigurationList = 170EC2F01CBF44C5008A4721 /* Build configuration list for PBXProject "WhisperBrowser" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -321,7 +321,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				170EC2F41CBF44C5008A4721 /* WhisperWebBrowser */,
+				170EC2F41CBF44C5008A4721 /* WhisperBrowser */,
 				17C536181F02375200482E31 /* FHBrowser */,
 			);
 		};
@@ -555,7 +555,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
 				GCC_WARN_UNUSED_VALUE = NO;
-				INFOPLIST_FILE = WhisperWebBrowser/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/WhisperBrowser/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.WebBrowser;
@@ -576,7 +576,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
 				GCC_WARN_UNUSED_VALUE = NO;
-				INFOPLIST_FILE = WhisperWebBrowser/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/WhisperBrowser/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.WebBrowser;
@@ -633,7 +633,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		170EC2F01CBF44C5008A4721 /* Build configuration list for PBXProject "WhisperWebBrowser" */ = {
+		170EC2F01CBF44C5008A4721 /* Build configuration list for PBXProject "WhisperBrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				170EC30A1CBF44C5008A4721 /* Debug */,
@@ -642,7 +642,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		170EC30C1CBF44C5008A4721 /* Build configuration list for PBXNativeTarget "WhisperWebBrowser" */ = {
+		170EC30C1CBF44C5008A4721 /* Build configuration list for PBXNativeTarget "WhisperBrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				170EC30D1CBF44C5008A4721 /* Debug */,
