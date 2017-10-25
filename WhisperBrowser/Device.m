@@ -109,7 +109,7 @@ static NSString * const KEY_Service = @"portForwardingService";
     }
 
     if (_stream == nil) {
-        WMWhisperStreamOptions options = WMWhisperStreamOptionEncrypt | WMWhisperStreamOptionMultiplexing | WMWhisperStreamOptionPortForwarding;
+        WMWhisperStreamOptions options = WMWhisperStreamOptionMultiplexing | WMWhisperStreamOptionPortForwarding;
         if (_protocol == WMWhisperTransportTypeICE) {
             options |= WMWhisperStreamOptionReliable;
         }
