@@ -1,11 +1,3 @@
-//
-//  Common.h
-//  WhisperWebBrowser
-//
-//  Created by suleyu on 2017/6/27.
-//  Copyright © 2017年 kortide. All rights reserved.
-//
-
 #ifndef Common_h
 #define Common_h
 

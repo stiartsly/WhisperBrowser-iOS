@@ -1,11 +1,3 @@
-//
-//  AppDelegate.m
-//  Whisper
-//
-//  Created by suleyu on 17/6/9.
-//  Copyright © 2017年 Kortide. All rights reserved.
-//
-
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import <NetworkExtension/NetworkExtension.h>
@@ -15,7 +7,6 @@
 @end
 
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 #if DEBUG == 1

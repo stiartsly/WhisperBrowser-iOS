@@ -1,11 +1,3 @@
-//
-//  DeviceManager.h
-//  Whisper
-//
-//  Created by suleyu on 17/6/9.
-//  Copyright © 2017年 Kortide. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "Device.h"
 
@@ -15,7 +7,7 @@
 @interface DeviceManager : NSObject
 
 @property (nonatomic, strong, readonly) NSString *username;
-@property (nonatomic, strong, readonly) WMWhisperUserInfo *selfInfo;
+@property (nonatomic, strong, readonly) WHWhisperUserInfo *selfInfo;
 @property (nonatomic, strong, readonly) NSArray *devices;
 @property (nonatomic, strong) Device *currentDevice;
 

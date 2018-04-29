@@ -1,11 +1,3 @@
-//
-//  LoginViewController.m
-//  WhisperWebBrowser
-//
-//  Created by suleyu on 2017/6/16.
-//  Copyright © 2017年 kortide. All rights reserved.
-//
-
 #import "LoginViewController.h"
 
 @interface LoginViewController () <UITextFieldDelegate>

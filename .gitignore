@@ -1,4 +1,7 @@
-WhisperBrowser.xcodeproj/project.xcworkspace/xcuserdata
+.DS_store
+DerivedData
+/build
 WhisperBrowser.xcodeproj/xcuserdata
-ManagedWhisper.framework
+WhisperBrowser.xcodeproj/project.xcworkspace/xcuserdata
 WhisperBrowser.xcworkspace
+ManagedWhisper.framework

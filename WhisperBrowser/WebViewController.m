@@ -1,11 +1,3 @@
-//
-//  WebViewController.m
-//  Whisper
-//
-//  Created by suleyu on 17/6/9.
-//  Copyright © 2017年 Kortide. All rights reserved.
-//
-
 #import "WebViewController.h"
 #import "SelfInfoViewController.h"
 #import "DeviceChooseViewController.h"

@@ -1,11 +1,3 @@
-//
-//  DeviceChooseViewController.m
-//  Whisper
-//
-//  Created by suleyu on 17/6/9.
-//  Copyright © 2017年 Kortide. All rights reserved.
-//
-
 #import "DeviceChooseViewController.h"
 #import "DeviceSettingViewController.h"
 #import "AddDeviceViewController.h"

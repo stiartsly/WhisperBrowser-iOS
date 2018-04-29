@@ -1,17 +1,9 @@
-//
-//  SelfInfoViewController.m
-//  WhisperWebBrowser
-//
-//  Created by suleyu on 2017/6/19.
-//  Copyright © 2017年 kortide. All rights reserved.
-//
-
 #import "SelfInfoViewController.h"
 #import "LoginViewController.h"
 
 @interface SelfInfoViewController ()
 {
-    WMWhisperUserInfo *selfInfo;
+    WHWhisperUserInfo *selfInfo;
 }
 @end
 

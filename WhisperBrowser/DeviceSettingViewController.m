@@ -1,11 +1,3 @@
-//
-//  DeviceSettingViewController.m
-//  Whisper
-//
-//  Created by suleyu on 17/6/9.
-//  Copyright © 2017年 Kortide. All rights reserved.
-//
-
 #import "DeviceSettingViewController.h"
 #import "DeviceManager.h"
 
@@ -110,10 +102,10 @@
                 cell.textLabel.text = @"协议";
                 textField.textColor = [UIColor blackColor];
                 textField.enabled = NO;
-                if (self.device.protocol == WMWhisperTransportTypeTCP) {
+                if (self.device.protocol == WHWhisperTransportTypeTCP) {
                     textField.text = @"TCP";
                 }
-                else if (self.device.protocol == WMWhisperTransportTypeUDP) {
+                else if (self.device.protocol == WHWhisperTransportTypeUDP) {
                     textField.text = @"UDP";
                 }
                 else {
@@ -162,15 +154,15 @@
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *iceAction = [UIAlertAction actionWithTitle:@"ICE" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            self.device.protocol = WMWhisperTransportTypeICE;
+            self.device.protocol = WHWhisperTransportTypeICE;
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }];
         UIAlertAction *tcpAction = [UIAlertAction actionWithTitle:@"TCP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            self.device.protocol = WMWhisperTransportTypeTCP;
+            self.device.protocol = WHWhisperTransportTypeTCP;
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }];
         UIAlertAction *udpAction = [UIAlertAction actionWithTitle:@"UDP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            self.device.protocol = WMWhisperTransportTypeUDP;
+            self.device.protocol = WHWhisperTransportTypeUDP;
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }];
         [alertController addAction:cancelAction];
