@@ -1,43 +1,44 @@
-Whisper Browser on iOS
-===========================
+Whisper Browser Run on iOS
+======================
 
-Whisper Browser is an application to demonstrate how to use Whisper portofrwarding over whisper netowrk. It show you can Apps on Android/iOS to access Http services inside NAT.
+Whisper Browser is an exemplary app to demonstrate how to use whisper portofrwarding over whisper network. It shows that you can conduct this app to access or browse http service behind the router.
 
 ## Whisper network types
 
-Two types of whisper network would be supprted:
+Two types of whisper network would be supported:
 
-- Managed whisper network
-- Decentralzied whisper network
+- Managed whisper network (or centralized whisper network)
+- Decentralized whisper network
 
 ## Build from source
 
-You should get source code from the following repository on github.com:
+Get source code from github.com with following repository:
 
 ```
 https://github.com/stiartsly/WhisperBrowser-iOS.git
 ```
-Then open this xcode project with Apple xcode to build it.
+Then open this project with Apple Xcode to build distribution.
 
 ## Build dependencies
 
-Before buiding whisper demo, you have to download and build the following dependencies:
+Before building whisper browser, you have to download and build the following dependencies:
 
-- ManagedWhisper.framework (vanilla)
+- ManagedWhisper.framework (currently for vanilla)
 - Bugly
 - QRCode
 
-As to whisper ios sdk, you need to get source from
+As to **ManagedWhisper.framework**, you need to get source from
 
 ```
 https://github.com/stiartsly/whisper-ios.git
 ```
-and after building, copy (or replace) it's ditributions 'ManagedWhisper' to top directory of project.
 
-## Deploy && Run
+and build it, then copy (or replace) it's ditribution **ManagedWhisper** to top directory of project.
 
-Run on Phone or Simulator with iOS version 9.0 or higher.
+## Deployment && Run
+
+Run on iOS Phone or Simulator with iOS version **9.0 or higher**.
 
 ## License
 
-Whisper Browser project source code files are made available under the MIT License.
+MIT
