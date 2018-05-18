@@ -130,7 +130,7 @@
                 }
                 else {
                     self.title = nil;
-                    NSString *urlString = [NSString stringWithFormat:@"http://localhost:%d", [DeviceManager sharedManager].currentDevice.localPort];
+                    NSString *urlString = [NSString stringWithFormat:@"http://127.0.0.1:%d", [DeviceManager sharedManager].currentDevice.localPort];
                     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]]];
                 }
             }
@@ -148,7 +148,7 @@
     if (port > 0)
     {
         self.title = nil;
-        urlString = [NSString stringWithFormat:@"http://localhost:%d", port];
+        urlString = [NSString stringWithFormat:@"http://127.0.0.1:%d", port];
     }
     else if (_webView.URL != nil)
     {

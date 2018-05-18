@@ -205,7 +205,7 @@ static NSString * const KEY_Service = @"portForwardingService";
     asyncSocket.delegate = self;
     
     uint16_t localPort = 0;
-    if ([asyncSocket acceptOnInterface:@"127.0.0.1" port:0 error:error]) {
+    if ([asyncSocket acceptOnInterface:@"localhost" port:0 error:error]) {
         localPort = [asyncSocket localPort];
         BLYLogInfo(@"localPort: %d", localPort);
         [asyncSocket disconnect];

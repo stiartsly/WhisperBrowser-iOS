@@ -45,6 +45,7 @@
 		A316E52220AE8680008C1D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A316E51C20AE8662008C1D91 /* Assets.xcassets */; };
 		A316E52320AE8680008C1D91 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A316E51D20AE8662008C1D91 /* Config.plist */; };
 		A316E52420AE8680008C1D91 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A316E51E20AE8662008C1D91 /* Info.plist */; };
+		A316E52820AEDFF1008C1D91 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A316E52720AEDFF1008C1D91 /* Info.plist */; };
 		A3461FF420ADB99D004BC45C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3461FF320ADB99C004BC45C /* main.m */; };
 		A3461FFA20ADBACE004BC45C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF620ADBACE004BC45C /* Assets.xcassets */; };
 		A3461FFB20ADBACE004BC45C /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF720ADBACE004BC45C /* Config.plist */; };
@@ -114,8 +115,8 @@
 		A316E51C20AE8662008C1D91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = OrchidResources/Assets.xcassets; sourceTree = "<group>"; };
 		A316E51D20AE8662008C1D91 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = OrchidResources/Config.plist; sourceTree = "<group>"; };
 		A316E51E20AE8662008C1D91 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = OrchidResources/Info.plist; sourceTree = "<group>"; };
+		A316E52720AEDFF1008C1D91 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = VanillaResources/Info.plist; sourceTree = "<group>"; };
 		A3461FF320ADB99C004BC45C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A3461FF520ADBACE004BC45C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = VanillaResources/Info.plist; sourceTree = "<group>"; };
 		A3461FF620ADBACE004BC45C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = VanillaResources/Assets.xcassets; sourceTree = "<group>"; };
 		A3461FF720ADBACE004BC45C /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = VanillaResources/Config.plist; sourceTree = "<group>"; };
 		A3461FF820ADBACE004BC45C /* whisper.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = whisper.pem; path = VanillaResources/whisper.pem; sourceTree = "<group>"; };
@@ -201,8 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				A3461FF620ADBACE004BC45C /* Assets.xcassets */,
+				A316E52720AEDFF1008C1D91 /* Info.plist */,
 				A3461FF720ADBACE004BC45C /* Config.plist */,
-				A3461FF520ADBACE004BC45C /* Info.plist */,
 				A3461FF820ADBACE004BC45C /* whisper.pem */,
 			);
 			name = VanillaResources;
@@ -341,6 +342,7 @@
 				A3461FFA20ADBACE004BC45C /* Assets.xcassets in Resources */,
 				A3461FFC20ADBACE004BC45C /* whisper.pem in Resources */,
 				A3461FFB20ADBACE004BC45C /* Config.plist in Resources */,
+				A316E52820AEDFF1008C1D91 /* Info.plist in Resources */,
 				1783A26B1EF3BF1700C14D67 /* LoginViewController.xib in Resources */,
 				170EC3081CBF44C5008A4721 /* LaunchScreen.storyboard in Resources */,
 				170EC3031CBF44C5008A4721 /* Main.storyboard in Resources */,
