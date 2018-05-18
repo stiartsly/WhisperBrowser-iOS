@@ -7,7 +7,7 @@
 @interface DeviceManager : NSObject
 
 @property (nonatomic, strong, readonly) NSString *username;
-@property (nonatomic, strong, readonly) WHWhisperUserInfo *selfInfo;
+@property (nonatomic, strong, readonly) NTWhisperUserInfo *selfInfo;
 @property (nonatomic, strong, readonly) NSArray *devices;
 @property (nonatomic, strong) Device *currentDevice;
 

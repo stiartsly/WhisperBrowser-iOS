@@ -102,15 +102,7 @@
                 cell.textLabel.text = @"协议";
                 textField.textColor = [UIColor blackColor];
                 textField.enabled = NO;
-                if (self.device.protocol == WHWhisperTransportTypeTCP) {
-                    textField.text = @"TCP";
-                }
-                else if (self.device.protocol == WHWhisperTransportTypeUDP) {
-                    textField.text = @"UDP";
-                }
-                else {
-                    textField.text = @"ICE";
-                }
+                textField.text = @"ICE";
                 break;
                 
             case 3:
@@ -151,10 +143,9 @@
         }
     }
     else if (indexPath.row == 2) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        /*UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
         UIAlertAction *iceAction = [UIAlertAction actionWithTitle:@"ICE" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            self.device.protocol = WHWhisperTransportTypeICE;
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }];
         UIAlertAction *tcpAction = [UIAlertAction actionWithTitle:@"TCP" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -180,6 +171,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self presentViewController:alertController animated:YES completion:nil];
         });
+        */
     }
 }
 

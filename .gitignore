@@ -4,4 +4,5 @@ DerivedData
 WhisperBrowser.xcodeproj/xcuserdata
 WhisperBrowser.xcodeproj/project.xcworkspace/xcuserdata
 WhisperBrowser.xcworkspace
-ManagedWhisper.framework
+WhisperVanilla.framework
+WhisperOrchid.framework

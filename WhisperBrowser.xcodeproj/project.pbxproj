@@ -8,11 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		170016F31CD8436C00D87014 /* DeviceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170016F21CD8436C00D87014 /* DeviceSettingViewController.m */; };
-		170EC2FA1CBF44C5008A4721 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2F91CBF44C5008A4721 /* main.m */; };
 		170EC2FD1CBF44C5008A4721 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2FC1CBF44C5008A4721 /* AppDelegate.m */; };
 		170EC3001CBF44C5008A4721 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2FF1CBF44C5008A4721 /* WebViewController.m */; };
 		170EC3031CBF44C5008A4721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3011CBF44C5008A4721 /* Main.storyboard */; };
-		170EC3051CBF44C5008A4721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3041CBF44C5008A4721 /* Assets.xcassets */; };
 		170EC3081CBF44C5008A4721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3061CBF44C5008A4721 /* LaunchScreen.storyboard */; };
 		170EC31A1CC0D6E2008A4721 /* DeviceChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */; };
 		170EC3231CC0D76B008A4721 /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */; };
@@ -25,48 +23,23 @@
 		1797C0E21CC0DA5200A440E8 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E11CC0DA5200A440E8 /* Device.m */; };
 		1797C0E71CC0F40400A440E8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E61CC0F40400A440E8 /* MBProgressHUD.m */; };
 		1797C0EB1CC4816200A440E8 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */; };
-		17BEC15B1EEE904800BECB2F /* whisper.pem in Resources */ = {isa = PBXBuildFile; fileRef = 17BEC15A1EEE904800BECB2F /* whisper.pem */; };
-		17C5361A1F02375200482E31 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */; };
-		17C5361B1F02375200482E31 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2FF1CBF44C5008A4721 /* WebViewController.m */; };
-		17C5361C1F02375200482E31 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2FC1CBF44C5008A4721 /* AppDelegate.m */; };
-		17C5361D1F02375200482E31 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E11CC0DA5200A440E8 /* Device.m */; };
-		17C5361E1F02375200482E31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2F91CBF44C5008A4721 /* main.m */; };
-		17C5361F1F02375200482E31 /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */; };
-		17C536201F02375200482E31 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0DE1CC0D92600A440E8 /* DeviceManager.m */; };
-		17C536211F02375200482E31 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 17788A2F1EF271D10031631E /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		17C536221F02375200482E31 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A2651EF3BEC300C14D67 /* LoginViewController.m */; };
-		17C536231F02375200482E31 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E61CC0F40400A440E8 /* MBProgressHUD.m */; };
-		17C536241F02375200482E31 /* DeviceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170016F21CD8436C00D87014 /* DeviceSettingViewController.m */; };
-		17C536251F02375200482E31 /* SelfInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A26D1EF7968B00C14D67 /* SelfInfoViewController.m */; };
-		17C536261F02375200482E31 /* DeviceChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */; };
-		17C536281F02375200482E31 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17148FBB1F009EE4007421C3 /* Bugly.framework */; };
-		17C5362B1F02375200482E31 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783A2691EF3BF1700C14D67 /* LoginViewController.xib */; };
-		17C5362C1F02375200482E31 /* whisper.pem in Resources */ = {isa = PBXBuildFile; fileRef = 17BEC15A1EEE904800BECB2F /* whisper.pem */; };
-		17C5362D1F02375200482E31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3061CBF44C5008A4721 /* LaunchScreen.storyboard */; };
-		17C5362E1F02375200482E31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3041CBF44C5008A4721 /* Assets.xcassets */; };
-		17C5362F1F02375200482E31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3011CBF44C5008A4721 /* Main.storyboard */; };
-		A310D7B92095A67900FF0703 /* ManagedWhisper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A310D7B72095766E00FF0703 /* ManagedWhisper.framework */; };
-		A310D7BC2095ACA000FF0703 /* ManagedWhisper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A310D7B72095766E00FF0703 /* ManagedWhisper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A3461FF420ADB99D004BC45C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3461FF320ADB99C004BC45C /* main.m */; };
+		A3461FF920ADBACE004BC45C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF520ADBACE004BC45C /* Info.plist */; };
+		A3461FFA20ADBACE004BC45C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF620ADBACE004BC45C /* Assets.xcassets */; };
+		A3461FFB20ADBACE004BC45C /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF720ADBACE004BC45C /* Config.plist */; };
+		A3461FFC20ADBACE004BC45C /* whisper.pem in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF820ADBACE004BC45C /* whisper.pem */; };
+		A3461FFD20ADBBC4004BC45C /* WhisperVanilla.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A389F1ED20ADABF6003EC188 /* WhisperVanilla.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A3461FFF20ADBC3A004BC45C /* WhisperVanilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A389F1ED20ADABF6003EC188 /* WhisperVanilla.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		17C425B11EEA94DD002FBBE9 /* Embed Frameworks */ = {
+		A389F1F020ADABF7003EC188 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A310D7BC2095ACA000FF0703 /* ManagedWhisper.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17C536301F02375200482E31 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
+				A3461FFD20ADBBC4004BC45C /* WhisperVanilla.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,16 +49,13 @@
 /* Begin PBXFileReference section */
 		170016F11CD8436C00D87014 /* DeviceSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceSettingViewController.h; sourceTree = "<group>"; };
 		170016F21CD8436C00D87014 /* DeviceSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceSettingViewController.m; sourceTree = "<group>"; };
-		170EC2F51CBF44C5008A4721 /* WhisperBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhisperBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		170EC2F91CBF44C5008A4721 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		170EC2F51CBF44C5008A4721 /* VanillaBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VanillaBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		170EC2FB1CBF44C5008A4721 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		170EC2FC1CBF44C5008A4721 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		170EC2FE1CBF44C5008A4721 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		170EC2FF1CBF44C5008A4721 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		170EC3021CBF44C5008A4721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		170EC3041CBF44C5008A4721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		170EC3071CBF44C5008A4721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		170EC3091CBF44C5008A4721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170EC3181CC0D6E2008A4721 /* DeviceChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceChooseViewController.h; sourceTree = "<group>"; };
 		170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceChooseViewController.m; sourceTree = "<group>"; };
 		170EC31F1CC0D76B008A4721 /* AddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
@@ -104,15 +74,15 @@
 		1797C0E11CC0DA5200A440E8 /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Device.m; sourceTree = "<group>"; };
 		1797C0E51CC0F40400A440E8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		1797C0E61CC0F40400A440E8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		1797C0E81CC4804F00A440E8 /* PrefixHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.h; sourceTree = "<group>"; };
 		1797C0E91CC4816200A440E8 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
 		1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
-		17BEC15A1EEE904800BECB2F /* whisper.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = whisper.pem; sourceTree = "<group>"; };
-		17C536361F02375200482E31 /* FHBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FHBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		17C5363C1F02394800482E31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17C5363D1F023D8200482E31 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
-		17C5363E1F023DDE00482E31 /* PrefixHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.h; sourceTree = "<group>"; };
-		A310D7B72095766E00FF0703 /* ManagedWhisper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ManagedWhisper.framework; sourceTree = "<group>"; };
+		17C5363D1F023D8200482E31 /* PrefixHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.h; sourceTree = "<group>"; };
+		A3461FF320ADB99C004BC45C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A3461FF520ADBACE004BC45C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = VanillaResources/Info.plist; sourceTree = "<group>"; };
+		A3461FF620ADBACE004BC45C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = VanillaResources/Assets.xcassets; sourceTree = "<group>"; };
+		A3461FF720ADBACE004BC45C /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = VanillaResources/Config.plist; sourceTree = "<group>"; };
+		A3461FF820ADBACE004BC45C /* whisper.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = whisper.pem; path = VanillaResources/whisper.pem; sourceTree = "<group>"; };
+		A389F1ED20ADABF6003EC188 /* WhisperVanilla.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WhisperVanilla.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,16 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3461FFF20ADBC3A004BC45C /* WhisperVanilla.framework in Frameworks */,
 				17148FBC1F009EE4007421C3 /* Bugly.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17C536271F02375200482E31 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A310D7B92095A67900FF0703 /* ManagedWhisper.framework in Frameworks */,
-				17C536281F02375200482E31 /* Bugly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				170EC2F71CBF44C5008A4721 /* WhisperBrowser */,
-				17C5363A1F02394800482E31 /* FHBrowser */,
 				1797C0E31CC0F40400A440E8 /* 3rds */,
 				17C425AC1EEA94BF002FBBE9 /* Frameworks */,
 				170EC2F61CBF44C5008A4721 /* Products */,
@@ -150,8 +111,7 @@
 		170EC2F61CBF44C5008A4721 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				170EC2F51CBF44C5008A4721 /* WhisperBrowser.app */,
-				17C536361F02375200482E31 /* FHBrowser.app */,
+				170EC2F51CBF44C5008A4721 /* VanillaBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,8 +119,7 @@
 		170EC2F71CBF44C5008A4721 /* WhisperBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				1797C0E81CC4804F00A440E8 /* PrefixHeader.h */,
-				17C5363D1F023D8200482E31 /* Common.h */,
+				17C5363D1F023D8200482E31 /* PrefixHeader.h */,
 				1797C0E01CC0DA5200A440E8 /* Device.h */,
 				1797C0E11CC0DA5200A440E8 /* Device.m */,
 				1797C0DD1CC0D92600A440E8 /* DeviceManager.h */,
@@ -181,23 +140,24 @@
 				170016F21CD8436C00D87014 /* DeviceSettingViewController.m */,
 				170EC31F1CC0D76B008A4721 /* AddDeviceViewController.h */,
 				170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */,
+				A3461FF320ADB99C004BC45C /* main.m */,
 				170EC3061CBF44C5008A4721 /* LaunchScreen.storyboard */,
 				1783A2691EF3BF1700C14D67 /* LoginViewController.xib */,
 				170EC3011CBF44C5008A4721 /* Main.storyboard */,
-				170EC3091CBF44C5008A4721 /* Info.plist */,
-				170EC2F81CBF44C5008A4721 /* Supporting Files */,
+				170EC2F81CBF44C5008A4721 /* VanillaResources */,
 			);
 			path = WhisperBrowser;
 			sourceTree = "<group>";
 		};
-		170EC2F81CBF44C5008A4721 /* Supporting Files */ = {
+		170EC2F81CBF44C5008A4721 /* VanillaResources */ = {
 			isa = PBXGroup;
 			children = (
-				170EC3041CBF44C5008A4721 /* Assets.xcassets */,
-				17BEC15A1EEE904800BECB2F /* whisper.pem */,
-				170EC2F91CBF44C5008A4721 /* main.m */,
+				A3461FF620ADBACE004BC45C /* Assets.xcassets */,
+				A3461FF720ADBACE004BC45C /* Config.plist */,
+				A3461FF520ADBACE004BC45C /* Info.plist */,
+				A3461FF820ADBACE004BC45C /* whisper.pem */,
 			);
-			name = "Supporting Files";
+			name = VanillaResources;
 			sourceTree = "<group>";
 		};
 		17788A2D1EF271D10031631E /* AsyncSocket */ = {
@@ -230,58 +190,31 @@
 		17C425AC1EEA94BF002FBBE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A310D7B72095766E00FF0703 /* ManagedWhisper.framework */,
+				A389F1ED20ADABF6003EC188 /* WhisperVanilla.framework */,
 				17148FBB1F009EE4007421C3 /* Bugly.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		17C5363A1F02394800482E31 /* FHBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				17C5363C1F02394800482E31 /* Info.plist */,
-				17C5363E1F023DDE00482E31 /* PrefixHeader.h */,
-			);
-			path = FHBrowser;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		170EC2F41CBF44C5008A4721 /* WhisperBrowser */ = {
+		170EC2F41CBF44C5008A4721 /* VanillaBrowser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 170EC30C1CBF44C5008A4721 /* Build configuration list for PBXNativeTarget "WhisperBrowser" */;
+			buildConfigurationList = 170EC30C1CBF44C5008A4721 /* Build configuration list for PBXNativeTarget "VanillaBrowser" */;
 			buildPhases = (
 				170EC2F11CBF44C5008A4721 /* Sources */,
 				170EC2F21CBF44C5008A4721 /* Frameworks */,
 				170EC2F31CBF44C5008A4721 /* Resources */,
-				17C425B11EEA94DD002FBBE9 /* Embed Frameworks */,
+				A389F1F020ADABF7003EC188 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = WhisperBrowser;
+			name = VanillaBrowser;
 			productName = WhisperBrowser;
-			productReference = 170EC2F51CBF44C5008A4721 /* WhisperBrowser.app */;
-			productType = "com.apple.product-type.application";
-		};
-		17C536181F02375200482E31 /* FHBrowser */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 17C536331F02375200482E31 /* Build configuration list for PBXNativeTarget "FHBrowser" */;
-			buildPhases = (
-				17C536191F02375200482E31 /* Sources */,
-				17C536271F02375200482E31 /* Frameworks */,
-				17C5362A1F02375200482E31 /* Resources */,
-				17C536301F02375200482E31 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FHBrowser;
-			productName = FHBrowser;
-			productReference = 17C536361F02375200482E31 /* FHBrowser.app */;
+			productReference = 170EC2F51CBF44C5008A4721 /* VanillaBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -298,9 +231,6 @@
 						DevelopmentTeam = XGJ9J7DHP5;
 						ProvisioningStyle = Automatic;
 					};
-					17C536181F02375200482E31 = {
-						DevelopmentTeam = XGJ9J7DHP5;
-					};
 				};
 			};
 			buildConfigurationList = 170EC2F01CBF44C5008A4721 /* Build configuration list for PBXProject "WhisperBrowser" */;
@@ -315,8 +245,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				170EC2F41CBF44C5008A4721 /* WhisperBrowser */,
-				17C536181F02375200482E31 /* FHBrowser */,
+				170EC2F41CBF44C5008A4721 /* VanillaBrowser */,
 			);
 		};
 /* End PBXProject section */
@@ -326,23 +255,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3461FFC20ADBACE004BC45C /* whisper.pem in Resources */,
+				A3461FF920ADBACE004BC45C /* Info.plist in Resources */,
 				1783A26B1EF3BF1700C14D67 /* LoginViewController.xib in Resources */,
-				17BEC15B1EEE904800BECB2F /* whisper.pem in Resources */,
 				170EC3081CBF44C5008A4721 /* LaunchScreen.storyboard in Resources */,
-				170EC3051CBF44C5008A4721 /* Assets.xcassets in Resources */,
 				170EC3031CBF44C5008A4721 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17C5362A1F02375200482E31 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				17C5362B1F02375200482E31 /* LoginViewController.xib in Resources */,
-				17C5362C1F02375200482E31 /* whisper.pem in Resources */,
-				17C5362D1F02375200482E31 /* LaunchScreen.storyboard in Resources */,
-				17C5362E1F02375200482E31 /* Assets.xcassets in Resources */,
-				17C5362F1F02375200482E31 /* Main.storyboard in Resources */,
+				A3461FFB20ADBACE004BC45C /* Config.plist in Resources */,
+				A3461FFA20ADBACE004BC45C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,11 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3461FF420ADB99D004BC45C /* main.m in Sources */,
 				1797C0EB1CC4816200A440E8 /* UIImage+ImageWithColor.m in Sources */,
 				170EC3001CBF44C5008A4721 /* WebViewController.m in Sources */,
 				170EC2FD1CBF44C5008A4721 /* AppDelegate.m in Sources */,
 				1797C0E21CC0DA5200A440E8 /* Device.m in Sources */,
-				170EC2FA1CBF44C5008A4721 /* main.m in Sources */,
 				170EC3231CC0D76B008A4721 /* AddDeviceViewController.m in Sources */,
 				1797C0DF1CC0D92600A440E8 /* DeviceManager.m in Sources */,
 				17788A311EF271D10031631E /* AsyncSocket.m in Sources */,
@@ -366,26 +285,6 @@
 				170016F31CD8436C00D87014 /* DeviceSettingViewController.m in Sources */,
 				1783A26E1EF7968B00C14D67 /* SelfInfoViewController.m in Sources */,
 				170EC31A1CC0D6E2008A4721 /* DeviceChooseViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		17C536191F02375200482E31 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				17C5361A1F02375200482E31 /* UIImage+ImageWithColor.m in Sources */,
-				17C5361B1F02375200482E31 /* WebViewController.m in Sources */,
-				17C5361C1F02375200482E31 /* AppDelegate.m in Sources */,
-				17C5361D1F02375200482E31 /* Device.m in Sources */,
-				17C5361E1F02375200482E31 /* main.m in Sources */,
-				17C5361F1F02375200482E31 /* AddDeviceViewController.m in Sources */,
-				17C536201F02375200482E31 /* DeviceManager.m in Sources */,
-				17C536211F02375200482E31 /* AsyncSocket.m in Sources */,
-				17C536221F02375200482E31 /* LoginViewController.m in Sources */,
-				17C536231F02375200482E31 /* MBProgressHUD.m in Sources */,
-				17C536241F02375200482E31 /* DeviceSettingViewController.m in Sources */,
-				17C536251F02375200482E31 /* SelfInfoViewController.m in Sources */,
-				17C536261F02375200482E31 /* DeviceChooseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,7 +367,9 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -514,8 +415,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};
@@ -528,12 +431,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = XGJ9J7DHP5;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WhisperBrowser/PrefixHeader.h";
 				GCC_WARN_UNUSED_VALUE = NO;
-				INFOPLIST_FILE = "$(SRCROOT)/WhisperBrowser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WhisperBrowser/VanillaResources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.browser;
+				OTHER_CFLAGS = "-DUSE_VANILLA";
+				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.vanilla.browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -550,60 +454,17 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = XGJ9J7DHP5;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WhisperBrowser/PrefixHeader.h";
 				GCC_WARN_UNUSED_VALUE = NO;
-				INFOPLIST_FILE = "$(SRCROOT)/WhisperBrowser/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WhisperBrowser/VanillaResources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.browser;
+				OTHER_CFLAGS = "-DUSE_VANILLA";
+				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.vanilla.browser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				VALID_ARCHS = arm64;
-			};
-			name = Release;
-		};
-		17C536341F02375200482E31 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = XGJ9J7DHP5;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
-				GCC_WARN_UNUSED_VALUE = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "$(SRCROOT)/FHBrowser/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.FHBrowser;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-			};
-			name = Debug;
-		};
-		17C536351F02375200482E31 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = XGJ9J7DHP5;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.h";
-				GCC_WARN_UNUSED_VALUE = NO;
-				HEADER_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "$(SRCROOT)/FHBrowser/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.app.iOS.FHBrowser;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -619,20 +480,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		170EC30C1CBF44C5008A4721 /* Build configuration list for PBXNativeTarget "WhisperBrowser" */ = {
+		170EC30C1CBF44C5008A4721 /* Build configuration list for PBXNativeTarget "VanillaBrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				170EC30D1CBF44C5008A4721 /* Debug */,
 				170EC30E1CBF44C5008A4721 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		17C536331F02375200482E31 /* Build configuration list for PBXNativeTarget "FHBrowser" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				17C536341F02375200482E31 /* Debug */,
-				17C536351F02375200482E31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

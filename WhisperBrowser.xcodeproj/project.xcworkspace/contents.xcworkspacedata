@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:WhisperWebBrowser.xcodeproj">
+      location = "self:WhisperBrowser.xcodeproj">
    </FileRef>
 </Workspace>

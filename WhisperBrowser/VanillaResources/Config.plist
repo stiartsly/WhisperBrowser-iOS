@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppId</key>
+	<string>HMWL2aNJKnyjtL7K3e7fCHxFVQ9fCpSW8xvpJG3LtFWW</string>
+	<key>AppKey</key>
+	<string>8e9VnqPJw5NbK2QztwpyzwysT5yQ84i3vWB43wxy2BJz</string>
+	<key>ApiServer</key>
+	<string>https://ws.iwhisper.io/api</string>
+	<key>MqttServer</key>
+	<string>ssl://mqtt.iwhisper.io:8883</string>
+	<key>StunServer</key>
+	<string>ws.iwhisper.io</string>
+	<key>TurnServer</key>
+	<string>ws.iwhisper.io</string>
+	<key>TurnUserName</key>
+	<string>whisper</string>
+	<key>TurnPassword</key>
+	<string>io2016whisper</string>
+</dict>
+</plist>

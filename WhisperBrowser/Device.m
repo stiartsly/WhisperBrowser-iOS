@@ -1,26 +1,25 @@
 #import "Device.h"
 #import "AsyncSocket.h"
 
-static NSString * const KEY_Protocol = @"transportProtocol";
 static NSString * const KEY_Service = @"portForwardingService";
 
-@interface Device () <WHWhisperStreamDelegate>
+@interface Device () <NTWhisperStreamDelegate>
 {
-    WHWhisperSession *_session;
-    WHWhisperStream *_stream;
-    WHWhisperStreamState _state;
+    NTWhisperSession *_session;
+    NTWhisperStream *_stream;
+    NTWhisperStreamState _state;
     NSInteger _portForwardingID;
     int _localPort;
     BOOL _didReceivedConfirmResponse;
     NSString *_sdp;
 }
 
-@property (nonatomic, strong) WHWhisperFriendInfo *deviceInfo;
+@property (nonatomic, strong) NTWhisperFriendInfo *deviceInfo;
 @end
 
 @implementation Device
 
-- (instancetype)initWithDeviceInfo:(WHWhisperFriendInfo *)deviceInfo;
+- (instancetype)initWithDeviceInfo:(NTWhisperFriendInfo *)deviceInfo;
 {
     if (self = [super init]) {
         _deviceInfo = deviceInfo;
@@ -28,24 +27,15 @@ static NSString * const KEY_Service = @"portForwardingService";
         _portForwardingID = -1;
         _didReceivedConfirmResponse = FALSE;
         _sdp = nil;
-        
+
         NSDictionary *deviceConfig = [[NSUserDefaults standardUserDefaults] objectForKey:self.deviceId];
         if (deviceConfig) {
-            NSNumber *protocol = deviceConfig[KEY_Protocol];
-            if (protocol) {
-                _protocol = protocol.integerValue;
-            }
-            else {
-                _protocol = defaultProtocol;
-            }
-
             _service = deviceConfig[KEY_Service];
             if (_service == nil) {
                 _service = defaultService;
             }
         }
         else {
-            _protocol = defaultProtocol;
             _service = defaultService;
         }
     }
@@ -76,7 +66,7 @@ static NSString * const KEY_Service = @"portForwardingService";
 
 - (BOOL)isOnline
 {
-    return (self.deviceInfo.status == WHWhisperConnectionStatusConnected);
+    return (self.deviceInfo.status == NTWhisperConnectionStatusConnected);
 }
 
 - (BOOL)connect
@@ -90,39 +80,23 @@ static NSString * const KEY_Service = @"portForwardingService";
     }
 
     if (_session == nil) {
-        WHWhisperSessionManager *sessionManager = [WHWhisperSessionManager getInstance];
+        NTWhisperSessionManager *sessionManager = [NTWhisperSessionManager getInstance];
         if (sessionManager == nil) {
             return NO;
         }
 
-        WHTransportOptions *options;
-        switch (self.protocol) {
-        case WHWhisperTransportTypeICE: {
-            WHIceTransportOptions *iceOptions = [[WHIceTransportOptions alloc] init];
-            [iceOptions setStunHost:STUN_SERVER];
-            [iceOptions setTurnHost:TURN_SERVER];
-            [iceOptions setTurnUsername:TURN_USERNAME];
-            [iceOptions setTurnPassword:TURN_PASSWORD];
-            options = (WHTransportOptions *)iceOptions;
-            break;
-        }
-        case WHWhisperTransportTypeUDP: {
-            WHUdpTransportOptions *udpOptions = [[WHUdpTransportOptions alloc] init];
-            [udpOptions setHost:@"localhost"];
-            options = (WHTransportOptions *)udpOptions;
-            break;
-        }
-        case WHWhisperTransportTypeTCP: {
-            WHTcpTransportOptions *tcpOptions = [[WHTcpTransportOptions alloc] init];
-            [tcpOptions setHost:@"lcoalhost"];
-            options = (WHTransportOptions *)tcpOptions;
-            break;
-        }
-        }
-        [options setThreadModel:WHTransportOptions.SharedThreadModel];
+        NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"Config" ofType:@"plist"];
+        NSDictionary *config = [[NSDictionary alloc]initWithContentsOfFile:plistPath];
+
+        NTIceTransportOptions *iceOptions = [[NTIceTransportOptions alloc] init];
+        [iceOptions setStunHost:config[@"StunServer"]];
+        [iceOptions setTurnHost:config[@"TurnServer"]];
+        [iceOptions setTurnUsername:config[@"TurnUserName"]];
+        [iceOptions setTurnPassword:config[@"TurnPassword"]];
+        [iceOptions setThreadModel:NTTransportOptions.SharedThreadModel];
 
         NSError *error = nil;
-        _session = [sessionManager newSessionTo:self.deviceId :options error:&error];
+        _session = [sessionManager newSessionTo:self.deviceId:iceOptions error:&error];
         if (_session == nil) {
             BLYLogError(@"Create session error: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
@@ -131,27 +105,20 @@ static NSString * const KEY_Service = @"portForwardingService";
     }
 
     if (_stream == nil) {
-        WHWhisperStreamOptions options = WHWhisperStreamOptionMultiplexing | WHWhisperStreamOptionPortForwarding;
-        if (_protocol == WHWhisperTransportTypeICE) {
-            options |= WHWhisperStreamOptionReliable;
-        }
+        NTWhisperStreamOptions options = NTWhisperStreamOptionMultiplexing | NTWhisperStreamOptionPortForwarding | NTWhisperStreamOptionReliable;
 
         NSError *error = nil;
-        _stream = [_session addStreamWithType:WHWhisperStreamTypeApplication options:options delegate:self error:&error];
+        _stream = [_session addStreamWithType:NTWhisperStreamTypeApplication options:options delegate:self error:&error];
         if (_stream == nil) {
             BLYLogError(@"Add stream error: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];
             return NO;
         }
-
-        if (_protocol != WHWhisperTransportTypeICE) {
-            [self sendInviteRequest];
-        }
     }
-    else if (_state == WHWhisperStreamStateInitialized || _state == WHWhisperStreamStateTransportReady) {
+    else if (_state == NTWhisperStreamStateInitialized || _state == NTWhisperStreamStateTransportReady) {
         [self sendInviteRequest];
     }
-    else if (_state == WHWhisperStreamStateConnected) {
+    else if (_state == NTWhisperStreamStateConnected) {
         [self openPortForwarding];
     }
 
@@ -187,27 +154,6 @@ static NSString * const KEY_Service = @"portForwardingService";
     }
 }
 
-- (void)setProtocol:(WHWhisperTransportType)protocol
-{
-    if (_protocol == protocol) {
-        return;
-    }
-
-    _protocol = protocol;
-
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *deviceConfig = [[userDefaults objectForKey:self.deviceId] mutableCopy];
-    if (deviceConfig == nil) {
-        deviceConfig = [NSMutableDictionary dictionaryWithCapacity:1];
-    }
-    deviceConfig[KEY_Protocol] = @(protocol);
-    [userDefaults setObject:deviceConfig forKey:self.deviceId];
-    [userDefaults synchronize];
-
-    [self disconnect];
-    [self connect];
-}
-
 - (void)setService:(NSString *)service
 {
     if (_service.length == 0) {
@@ -239,7 +185,7 @@ static NSString * const KEY_Service = @"portForwardingService";
         _portForwardingID = -1;
     }
 
-    if (_state == WHWhisperStreamStateConnected) {
+    if (_state == NTWhisperStreamStateConnected) {
         [self openPortForwarding];
     }
 }
@@ -269,8 +215,8 @@ static NSString * const KEY_Service = @"portForwardingService";
 {
     NSError *error = nil;
     if (![_session sendInviteRequestWithResponseHandler:
-          ^(WHWhisperSession *session, NSInteger status, NSString *reason, NSString *sdp) {
-              if (session != _session || _state != WHWhisperStreamStateTransportReady) {
+          ^(NTWhisperSession *session, NSInteger status, NSString *reason, NSString *sdp) {
+              if (session != _session || _state != NTWhisperStreamStateTransportReady) {
                   return;
               }
 
@@ -309,14 +255,14 @@ static NSString * const KEY_Service = @"portForwardingService";
     }
 
     NSNumber *portForwarding = [_stream openPortForwardingForService:self.service
-                                                       withProtocol:WHPortForwardingProtocolTCP
+                                                       withProtocol:NTPortForwardingProtocolTCP
                                                                host:@"localhost"
                                                                port:[@(localPort) stringValue]
                                                               error:&error];
     if (portForwarding) {
         _portForwardingID = portForwarding.integerValue;
         _localPort = localPort;
-        BLYLogInfo(@"Success to open port forwarding : %d, loacl port : %d", (int)_portForwardingID, localPort);
+        BLYLogInfo(@"Success to open port %@ forwarding : %d, local port : %d", self.service, (int)_portForwardingID, localPort);
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnected object:self userInfo:nil];
     }
     else {
@@ -326,7 +272,7 @@ static NSString * const KEY_Service = @"portForwardingService";
 }
 
 #pragma mark - ECSessionDelegate
-- (void)whisperStream:(WHWhisperStream *)stream stateDidChange:(enum WHWhisperStreamState)newState
+- (void)whisperStream:(NTWhisperStream *)stream stateDidChange:(enum NTWhisperStreamState)newState
 {
     BLYLogInfo(@"Stream state: %d", (int)newState);
 
@@ -337,11 +283,11 @@ static NSString * const KEY_Service = @"portForwardingService";
     _state = newState;
 
     switch (newState) {
-        case WHWhisperStreamStateInitialized:
+        case NTWhisperStreamStateInitialized:
             [self sendInviteRequest];
             break;
 
-        case WHWhisperStreamStateTransportReady:
+        case NTWhisperStreamStateTransportReady:
             while (!_didReceivedConfirmResponse) {
                 [NSThread sleepForTimeInterval:0.2];
             }
@@ -349,13 +295,13 @@ static NSString * const KEY_Service = @"portForwardingService";
             //TODO:
             break;
 
-        case WHWhisperStreamStateConnected:
+        case NTWhisperStreamStateConnected:
             [self openPortForwarding];
             break;
 
-        case WHWhisperStreamStateDeactivated:
-        case WHWhisperStreamStateClosed:
-        case WHWhisperStreamStateError:
+        case NTWhisperStreamStateDeactivated:
+        case NTWhisperStreamStateClosed:
+        case NTWhisperStreamStateError:
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:nil];
             [self disconnect];
             break;

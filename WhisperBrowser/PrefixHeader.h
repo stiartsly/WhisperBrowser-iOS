@@ -1,23 +1,20 @@
-#ifndef PrefixHeader_H
-#define PrefixHeader_H
-#define _INTERNAL_
+#ifndef PrefixHeader_h
+#define PrefixHeader_h
 
-#import "Common.h"
+#if USE_VANILLA
+#import <WhisperVanilla/WhisperVanilla.h>
+#endif
 
-static NSString * const APP_ID = @"5guWk5ftzCzMvpxQEfPVWjKXimY4Xg973E33nph15uug";
-static NSString * const APP_KEY = @"DCNCU7HfGyFx7HrnJSpZZcbCREAppv1uZy4JCbqQHM1C";
+#import <Bugly/Bugly.h>
+#import "DeviceManager.h"
+#import "MBProgressHUD.h"
 
-static NSString * const API_SERVER = @"https://ws.iwhisper.io/api";
-static NSString * const MQTT_SERVER = @"ssl://mqtt.iwhisper.io:8883";
+#define weakSelf(self)  __weak __typeof(self)weakSelf = self
+#define strongSelf(weakSelf)    __strong __typeof(weakSelf)strongSelf = weakSelf
 
-static NSString * const STUN_SERVER = @"ws.iwhisper.io";
-static NSString * const TURN_SERVER = @"ws.iwhisper.io";
-static NSString * const TURN_USERNAME = @"whisper";
-static NSString * const TURN_PASSWORD = @"io2016whisper";
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-static const WHWhisperTransportType defaultProtocol = WHWhisperTransportTypeICE;
 static NSString * const defaultService = @"web";
-
 static NSString * const Bugly_APP_ID = @"9dc9b11a50";
 
-#endif
+#endif /* PrefixHeader_h */

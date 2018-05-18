@@ -3,7 +3,7 @@
 
 @interface SelfInfoViewController ()
 {
-    WHWhisperUserInfo *selfInfo;
+    NTWhisperUserInfo *selfInfo;
 }
 @end
 
