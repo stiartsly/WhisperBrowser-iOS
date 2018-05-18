@@ -23,8 +23,32 @@
 		1797C0E21CC0DA5200A440E8 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E11CC0DA5200A440E8 /* Device.m */; };
 		1797C0E71CC0F40400A440E8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E61CC0F40400A440E8 /* MBProgressHUD.m */; };
 		1797C0EB1CC4816200A440E8 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */; };
+		A316E4F220AE7019008C1D91 /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E11CC0DA5200A440E8 /* Device.m */; };
+		A316E4F320AE7019008C1D91 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0DE1CC0D92600A440E8 /* DeviceManager.m */; };
+		A316E4F420AE7019008C1D91 /* UIImage+ImageWithColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */; };
+		A316E4F520AE7019008C1D91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2FC1CBF44C5008A4721 /* AppDelegate.m */; };
+		A316E4F620AE7019008C1D91 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A2651EF3BEC300C14D67 /* LoginViewController.m */; };
+		A316E4F720AE7019008C1D91 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC2FF1CBF44C5008A4721 /* WebViewController.m */; };
+		A316E4F820AE7019008C1D91 /* SelfInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1783A26D1EF7968B00C14D67 /* SelfInfoViewController.m */; };
+		A316E4F920AE7019008C1D91 /* DeviceChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3191CC0D6E2008A4721 /* DeviceChooseViewController.m */; };
+		A316E4FA20AE7019008C1D91 /* DeviceSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170016F21CD8436C00D87014 /* DeviceSettingViewController.m */; };
+		A316E4FB20AE7019008C1D91 /* AddDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 170EC3201CC0D76B008A4721 /* AddDeviceViewController.m */; };
+		A316E4FC20AE7019008C1D91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3461FF320ADB99C004BC45C /* main.m */; };
+		A316E4FD20AE733F008C1D91 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 17788A2F1EF271D10031631E /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A316E4FE20AE733F008C1D91 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1797C0E61CC0F40400A440E8 /* MBProgressHUD.m */; };
+		A316E50420AE74E0008C1D91 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17148FBB1F009EE4007421C3 /* Bugly.framework */; };
+		A316E50F20AE7CB2008C1D91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3061CBF44C5008A4721 /* LaunchScreen.storyboard */; };
+		A316E51020AE7CB2008C1D91 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1783A2691EF3BF1700C14D67 /* LoginViewController.xib */; };
+		A316E51120AE7CB2008C1D91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170EC3011CBF44C5008A4721 /* Main.storyboard */; };
+		A316E51A20AE8024008C1D91 /* WhisperOrchid.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A316E51920AE8024008C1D91 /* WhisperOrchid.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A316E51B20AE8032008C1D91 /* WhisperOrchid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A316E51920AE8024008C1D91 /* WhisperOrchid.framework */; };
+		A316E51F20AE8662008C1D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A316E51C20AE8662008C1D91 /* Assets.xcassets */; };
+		A316E52020AE8662008C1D91 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A316E51D20AE8662008C1D91 /* Config.plist */; };
+		A316E52120AE8662008C1D91 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A316E51E20AE8662008C1D91 /* Info.plist */; };
+		A316E52220AE8680008C1D91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A316E51C20AE8662008C1D91 /* Assets.xcassets */; };
+		A316E52320AE8680008C1D91 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A316E51D20AE8662008C1D91 /* Config.plist */; };
+		A316E52420AE8680008C1D91 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A316E51E20AE8662008C1D91 /* Info.plist */; };
 		A3461FF420ADB99D004BC45C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A3461FF320ADB99C004BC45C /* main.m */; };
-		A3461FF920ADBACE004BC45C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF520ADBACE004BC45C /* Info.plist */; };
 		A3461FFA20ADBACE004BC45C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF620ADBACE004BC45C /* Assets.xcassets */; };
 		A3461FFB20ADBACE004BC45C /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF720ADBACE004BC45C /* Config.plist */; };
 		A3461FFC20ADBACE004BC45C /* whisper.pem in Resources */ = {isa = PBXBuildFile; fileRef = A3461FF820ADBACE004BC45C /* whisper.pem */; };
@@ -33,6 +57,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A316E50320AE74CF008C1D91 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A316E51A20AE8024008C1D91 /* WhisperOrchid.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A389F1F020ADABF7003EC188 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,6 +112,11 @@
 		1797C0E91CC4816200A440E8 /* UIImage+ImageWithColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithColor.h"; sourceTree = "<group>"; };
 		1797C0EA1CC4816200A440E8 /* UIImage+ImageWithColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithColor.m"; sourceTree = "<group>"; };
 		17C5363D1F023D8200482E31 /* PrefixHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.h; sourceTree = "<group>"; };
+		A316E4DC20AE6F8A008C1D91 /* OrchidBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrchidBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A316E51920AE8024008C1D91 /* WhisperOrchid.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WhisperOrchid.framework; sourceTree = "<group>"; };
+		A316E51C20AE8662008C1D91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = OrchidResources/Assets.xcassets; sourceTree = "<group>"; };
+		A316E51D20AE8662008C1D91 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = OrchidResources/Config.plist; sourceTree = "<group>"; };
+		A316E51E20AE8662008C1D91 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = OrchidResources/Info.plist; sourceTree = "<group>"; };
 		A3461FF320ADB99C004BC45C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A3461FF520ADBACE004BC45C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = VanillaResources/Info.plist; sourceTree = "<group>"; };
 		A3461FF620ADBACE004BC45C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = VanillaResources/Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +132,15 @@
 			files = (
 				A3461FFF20ADBC3A004BC45C /* WhisperVanilla.framework in Frameworks */,
 				17148FBC1F009EE4007421C3 /* Bugly.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A316E4D920AE6F8A008C1D91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A316E51B20AE8032008C1D91 /* WhisperOrchid.framework in Frameworks */,
+				A316E50420AE74E0008C1D91 /* Bugly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				170EC2F51CBF44C5008A4721 /* VanillaBrowser.app */,
+				A316E4DC20AE6F8A008C1D91 /* OrchidBrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,6 +194,7 @@
 				170EC3061CBF44C5008A4721 /* LaunchScreen.storyboard */,
 				1783A2691EF3BF1700C14D67 /* LoginViewController.xib */,
 				170EC3011CBF44C5008A4721 /* Main.storyboard */,
+				A346200220AE6A7B004BC45C /* OrchidResources */,
 				170EC2F81CBF44C5008A4721 /* VanillaResources */,
 			);
 			path = WhisperBrowser;
@@ -190,10 +241,21 @@
 		17C425AC1EEA94BF002FBBE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A316E51920AE8024008C1D91 /* WhisperOrchid.framework */,
 				A389F1ED20ADABF6003EC188 /* WhisperVanilla.framework */,
 				17148FBB1F009EE4007421C3 /* Bugly.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A346200220AE6A7B004BC45C /* OrchidResources */ = {
+			isa = PBXGroup;
+			children = (
+				A316E51C20AE8662008C1D91 /* Assets.xcassets */,
+				A316E51D20AE8662008C1D91 /* Config.plist */,
+				A316E51E20AE8662008C1D91 /* Info.plist */,
+			);
+			name = OrchidResources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,17 +279,40 @@
 			productReference = 170EC2F51CBF44C5008A4721 /* VanillaBrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A316E4DB20AE6F8A008C1D91 /* OrchidBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A316E4EF20AE6F8C008C1D91 /* Build configuration list for PBXNativeTarget "OrchidBrowser" */;
+			buildPhases = (
+				A316E4D820AE6F8A008C1D91 /* Sources */,
+				A316E4D920AE6F8A008C1D91 /* Frameworks */,
+				A316E4DA20AE6F8A008C1D91 /* Resources */,
+				A316E50320AE74CF008C1D91 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OrchidBrowser;
+			productName = OrchidBrowser;
+			productReference = A316E4DC20AE6F8A008C1D91 /* OrchidBrowser.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		170EC2ED1CBF44C5008A4721 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = kortide;
 				TargetAttributes = {
 					170EC2F41CBF44C5008A4721 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = XGJ9J7DHP5;
+						ProvisioningStyle = Automatic;
+					};
+					A316E4DB20AE6F8A008C1D91 = {
+						CreatedOnToolsVersion = 9.3.1;
 						DevelopmentTeam = XGJ9J7DHP5;
 						ProvisioningStyle = Automatic;
 					};
@@ -246,6 +331,7 @@
 			projectRoot = "";
 			targets = (
 				170EC2F41CBF44C5008A4721 /* VanillaBrowser */,
+				A316E4DB20AE6F8A008C1D91 /* OrchidBrowser */,
 			);
 		};
 /* End PBXProject section */
@@ -255,13 +341,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3461FFA20ADBACE004BC45C /* Assets.xcassets in Resources */,
 				A3461FFC20ADBACE004BC45C /* whisper.pem in Resources */,
-				A3461FF920ADBACE004BC45C /* Info.plist in Resources */,
+				A316E52120AE8662008C1D91 /* Info.plist in Resources */,
+				A3461FFB20ADBACE004BC45C /* Config.plist in Resources */,
 				1783A26B1EF3BF1700C14D67 /* LoginViewController.xib in Resources */,
+				A316E52020AE8662008C1D91 /* Config.plist in Resources */,
+				A316E51F20AE8662008C1D91 /* Assets.xcassets in Resources */,
 				170EC3081CBF44C5008A4721 /* LaunchScreen.storyboard in Resources */,
 				170EC3031CBF44C5008A4721 /* Main.storyboard in Resources */,
-				A3461FFB20ADBACE004BC45C /* Config.plist in Resources */,
-				A3461FFA20ADBACE004BC45C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A316E4DA20AE6F8A008C1D91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A316E52220AE8680008C1D91 /* Assets.xcassets in Resources */,
+				A316E52320AE8680008C1D91 /* Config.plist in Resources */,
+				A316E52420AE8680008C1D91 /* Info.plist in Resources */,
+				A316E50F20AE7CB2008C1D91 /* LaunchScreen.storyboard in Resources */,
+				A316E51020AE7CB2008C1D91 /* LoginViewController.xib in Resources */,
+				A316E51120AE7CB2008C1D91 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +386,26 @@
 				170016F31CD8436C00D87014 /* DeviceSettingViewController.m in Sources */,
 				1783A26E1EF7968B00C14D67 /* SelfInfoViewController.m in Sources */,
 				170EC31A1CC0D6E2008A4721 /* DeviceChooseViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A316E4D820AE6F8A008C1D91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A316E4FD20AE733F008C1D91 /* AsyncSocket.m in Sources */,
+				A316E4FE20AE733F008C1D91 /* MBProgressHUD.m in Sources */,
+				A316E4F220AE7019008C1D91 /* Device.m in Sources */,
+				A316E4F320AE7019008C1D91 /* DeviceManager.m in Sources */,
+				A316E4F420AE7019008C1D91 /* UIImage+ImageWithColor.m in Sources */,
+				A316E4F520AE7019008C1D91 /* AppDelegate.m in Sources */,
+				A316E4F620AE7019008C1D91 /* LoginViewController.m in Sources */,
+				A316E4F720AE7019008C1D91 /* WebViewController.m in Sources */,
+				A316E4F820AE7019008C1D91 /* SelfInfoViewController.m in Sources */,
+				A316E4F920AE7019008C1D91 /* DeviceChooseViewController.m in Sources */,
+				A316E4FA20AE7019008C1D91 /* DeviceSettingViewController.m in Sources */,
+				A316E4FB20AE7019008C1D91 /* AddDeviceViewController.m in Sources */,
+				A316E4FC20AE7019008C1D91 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +589,68 @@
 			};
 			name = Release;
 		};
+		A316E4F020AE6F8C008C1D91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XGJ9J7DHP5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WhisperBrowser/PrefixHeader.h";
+				INFOPLIST_FILE = "$(SRCROOT)/WhisperBrowser/OrchidResources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "-DUSE_ORCHID";
+				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.orchid.browser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A316E4F120AE6F8C008C1D91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = XGJ9J7DHP5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/WhisperBrowser/PrefixHeader.h";
+				INFOPLIST_FILE = "$(SRCROOT)/WhisperBrowser/OrchidResources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_CFLAGS = "-DUSE_ORCHID";
+				PRODUCT_BUNDLE_IDENTIFIER = io.whisper.orchid.browser;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -485,6 +668,15 @@
 			buildConfigurations = (
 				170EC30D1CBF44C5008A4721 /* Debug */,
 				170EC30E1CBF44C5008A4721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A316E4EF20AE6F8C008C1D91 /* Build configuration list for PBXNativeTarget "OrchidBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A316E4F020AE6F8C008C1D91 /* Debug */,
+				A316E4F120AE6F8C008C1D91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

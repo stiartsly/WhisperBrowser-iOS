@@ -85,6 +85,8 @@ static NSString * const KEY_Service = @"portForwardingService";
             return NO;
         }
 
+        NSError *error = nil;
+#if USE_VANILLA
         NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"Config" ofType:@"plist"];
         NSDictionary *config = [[NSDictionary alloc]initWithContentsOfFile:plistPath];
 
@@ -95,8 +97,11 @@ static NSString * const KEY_Service = @"portForwardingService";
         [iceOptions setTurnPassword:config[@"TurnPassword"]];
         [iceOptions setThreadModel:NTTransportOptions.SharedThreadModel];
 
-        NSError *error = nil;
         _session = [sessionManager newSessionTo:self.deviceId:iceOptions error:&error];
+#elif USE_ORCHID
+        _session = [sessionManager newSessionTo:self.deviceId error:&error];
+#else
+#endif
         if (_session == nil) {
             BLYLogError(@"Create session error: %@", error);
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationDeviceConnectFailed object:self userInfo:@{@"error": error}];

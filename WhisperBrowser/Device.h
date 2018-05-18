@@ -1,7 +1,4 @@
 #import <Foundation/Foundation.h>
-#if USE_VANILLA
-#import <WhisperVanilla/WhisperVanilla.h>
-#endif
 
 #define kNotificationDeviceConnected        @"kNotificationDeviceConnected"
 #define kNotificationDeviceConnectFailed    @"kNotificationDeviceConnectFailed"

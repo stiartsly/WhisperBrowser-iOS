@@ -4,6 +4,9 @@
 #if USE_VANILLA
 #import <WhisperVanilla/WhisperVanilla.h>
 #endif
+#if USE_ORCHID
+#import <WhisperOrchid/WhisperOrchid.h>
+#endif
 
 #import <Bugly/Bugly.h>
 #import "DeviceManager.h"

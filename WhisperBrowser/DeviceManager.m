@@ -101,6 +101,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
             NSDictionary *config = [[NSDictionary alloc]initWithContentsOfFile:plistPath];
 
             NTWhisperOptions *options = [[NTWhisperOptions alloc] init];
+#if USE_VANILLA
             [options setAppId:config[@"AppId"] andKey:config[@"AppKey"]];
             [options setLogin:username andPassword:password];
             [options setApiServerUrl: config[@"ApiServer"]];
@@ -110,6 +111,24 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
             [options setDeviceId: deviceId];
             [options setConnectTimeout: 5];
 
+#elif USE_ORCHID
+            NSArray *bootstraps = config[@"Bootstraps"];
+            NSMutableArray *bootstrapNodes = [[NSMutableArray alloc] initWithCapacity:bootstraps.count];
+            for (NSDictionary *bootstrap in bootstraps) {
+                NTBootstrapNode *node = [[NTBootstrapNode alloc] init];
+                node.ipv4 = bootstrap[@"ipv4"];
+                node.ipv6 = bootstrap[@"ipv6"];
+                node.port = bootstrap[@"port"];
+                node.publicKey = bootstrap[@"public_key"];
+                [bootstrapNodes addObject:node];
+            }
+
+            options.persistentLocation = whisperDirectory;
+            options.udpEnabled = [config[@"udp_enabled"] boolValue];
+            options.bootstrapNodes = bootstrapNodes;
+#else
+//MARK: unknown variant
+#endif
             whisperInstance = [NTWhisper getInstanceWithOptions:options delegate:self error:&error];
             if (whisperInstance == nil) {
                 BLYLogError(@"Create whisper instance failed: %@", error);
@@ -168,7 +187,9 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
     devices = nil;
     currentDevice = nil;
 
+#if USE_VANILLA
     [[NTWhisperSessionManager getInstance] removeTransport:NTWhisperTransportTypeICE];
+#endif
     [[NTWhisperSessionManager getInstance] cleanup];
     [whisperInstance kill];
     whisperInstance = nil;
@@ -279,6 +300,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
 
     [NTWhisperSessionManager getInstance:whisper error:nil];
 
+#if USE_VANILLA
     NSString *plistPath = [[NSBundle mainBundle]pathForResource:@"Config" ofType:@"plist"];
     NSDictionary *config = [[NSDictionary alloc]initWithContentsOfFile:plistPath];
 
@@ -289,7 +311,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
     [iceOptions setTurnPassword:config[@"TurnPassword"]];
     [iceOptions setThreadModel:NTTransportOptions.SharedThreadModel];
     [[NTWhisperSessionManager getInstance] addTransport:iceOptions error:nil];
-
+#endif
     [self.currentDevice connect];
 }
 
@@ -321,7 +343,7 @@ static NSString * const KEY_CurrentDeviceId = @"currentDeviceIdentifier";
                 break;
             }
         }
-        if (self.currentDevice == nil) {
+        if (self.currentDevice == nil && devices.count > 0) {
             self.currentDevice = devices[0];
         }
     }

@@ -25,6 +25,7 @@
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
 
+#if USE_VANILLA
     if ([DeviceManager sharedManager].username) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         self.window.rootViewController = [storyboard instantiateInitialViewController];
@@ -33,6 +34,22 @@
         LoginViewController * loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
         self.window.rootViewController = loginVC;
     }
+#elif USE_ORCHID
+    if (true) {
+        [[DeviceManager sharedManager] login:nil password:nil completion:^(NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (!error) {
+                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    [UIApplication sharedApplication].keyWindow.rootViewController = [storyboard instantiateInitialViewController];
+                }
+            });
+        }];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        self.window.rootViewController = [storyboard instantiateInitialViewController];
+    }
+#else
+//MARK: unkown error.
+#endif
 
     [self.window makeKeyAndVisible];
     return YES;
